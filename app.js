@@ -1272,12 +1272,14 @@ function initUIControls() {
 
     if (menuToggle && navLinks) {
         menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('open');
             navLinks.classList.toggle('open');
         });
         
         navLinks.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
                 if (window.innerWidth <= 768) {
+                    menuToggle.classList.remove('open');
                     navLinks.classList.remove('open');
                 }
             });
@@ -1286,6 +1288,7 @@ function initUIControls() {
         // Reset state if resized to desktop
         window.addEventListener('resize', () => {
             if (window.innerWidth > 768) {
+                menuToggle.classList.remove('open');
                 navLinks.classList.remove('open');
             }
         });

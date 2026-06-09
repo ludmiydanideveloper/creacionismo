@@ -81,6 +81,22 @@ function initHeader() {
             toggle.classList.toggle('active');
             nav.classList.toggle('active');
         });
+
+        nav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    toggle.classList.remove('active');
+                    nav.classList.remove('active');
+                }
+            });
+        });
+
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) {
+                toggle.classList.remove('active');
+                nav.classList.remove('active');
+            }
+        });
     }
 }
 

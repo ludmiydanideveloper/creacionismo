@@ -4,29 +4,30 @@
 
 /* 1. Reset y Variables */
 :root {
-    --bg-dark-deep: #06060f;
-    --bg-card: rgba(0, 0, 0, 0.75);
-    --bg-card-hover: rgba(10, 10, 25, 0.9);
-    --border-thin: 1px solid rgba(255, 255, 255, 0.08);
-    --border-thin-hover: 1px solid rgba(27, 221, 184, 0.25);
+    /* Fondo azul marino profundo — tono de la Educación Adventista */
+    --bg-dark-deep: #070C1A;
+    --bg-card: rgba(15, 25, 60, 0.75);
+    --bg-card-hover: rgba(20, 35, 80, 0.9);
+    --border-thin: 1px solid rgba(74, 158, 232, 0.12);
+    --border-thin-hover: 1px solid rgba(74, 158, 232, 0.35);
     
-    /* Paleta de Colores Neón - Loop Studio */
-    --color-teal: #1bddb8;
-    --color-purple: #a78bfa;
-    --color-pink: #f0abfc;
-    --color-amber: #fbbf24;
+    /* Paleta Azul Adventista */
+    --color-teal: #4A9EE8;        /* Azul cielo brillante (acento primario) */
+    --color-purple: #1B4FBF;      /* Azul royal oscuro (acento secundario)  */
+    --color-pink: #7CB9F5;        /* Azul celeste claro (acento terciario)  */
+    --color-amber: #fbbf24;       /* Dorado — contraste cálido              */
     --color-red: #e74c3c;
     
     --color-text-white: #ffffff;
-    --color-text-muted: rgba(255, 255, 255, 0.6);
+    --color-text-muted: rgba(255, 255, 255, 0.62);
     --color-text-low: rgba(255, 255, 255, 0.35);
     
     --font-title: 'Clash Display', -apple-system, sans-serif;
     --font-body: 'Satoshi', -apple-system, sans-serif;
     
-    --shadow-glow-teal: 0 0 25px rgba(27, 221, 184, 0.15);
-    --shadow-glow-purple: 0 0 25px rgba(167, 139, 250, 0.15);
-    --shadow-glow-amber: 0 0 25px rgba(251, 191, 36, 0.15);
+    --shadow-glow-teal: 0 0 30px rgba(74, 158, 232, 0.2);
+    --shadow-glow-purple: 0 0 30px rgba(27, 79, 191, 0.2);
+    --shadow-glow-amber: 0 0 25px rgba(251, 191, 36, 0.18);
     --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -40,6 +41,9 @@ html {
     scroll-behavior: smooth;
     font-size: 16px;
     background-color: var(--bg-dark-deep);
+    background-image: radial-gradient(ellipse at 20% 0%, rgba(27, 79, 191, 0.18) 0%, transparent 60%),
+                      radial-gradient(ellipse at 80% 100%, rgba(74, 158, 232, 0.10) 0%, transparent 60%);
+    background-attachment: fixed;
 }
 
 body {
@@ -60,7 +64,7 @@ body {
     height: 100vh;
     z-index: -2;
     pointer-events: none;
-    background: radial-gradient(circle at 50% 50%, #0c0b1e 0%, #06060f 100%);
+    background: radial-gradient(circle at 50% 50%, #0a1128 0%, #070C1A 100%);
 }
 
 /* 2. Tipografías de Lujo */
@@ -78,7 +82,7 @@ p {
 }
 
 .gradient-text {
-    background: linear-gradient(135deg, var(--color-teal) 0%, var(--color-purple) 55%, var(--color-pink) 100%);
+    background: linear-gradient(135deg, #7CB9F5 0%, #4A9EE8 40%, #1B4FBF 100%);
     background-size: 200% 200%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -110,16 +114,16 @@ p {
 }
 
 .btn-primary-gradient {
-    background: linear-gradient(135deg, var(--color-teal), var(--color-purple));
+    background: linear-gradient(135deg, #4A9EE8 0%, #1B4FBF 100%);
     color: var(--color-text-white);
     border: none;
-    box-shadow: 0 4px 20px rgba(27, 221, 184, 0.2);
+    box-shadow: 0 4px 20px rgba(74, 158, 232, 0.25);
 }
 
 .btn-primary-gradient:hover {
     transform: translateY(-2px) scale(1.02);
     opacity: 0.95;
-    box-shadow: 0 6px 25px rgba(27, 221, 184, 0.35);
+    box-shadow: 0 6px 28px rgba(74, 158, 232, 0.42);
 }
 
 .btn-outline-white {
@@ -148,7 +152,7 @@ p {
     align-items: center;
     padding: 0 6%;
     z-index: 1000;
-    background: rgba(6, 6, 15, 0.75);
+    background: rgba(7, 12, 26, 0.75);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border-bottom: var(--border-thin);
@@ -157,7 +161,7 @@ p {
 
 .main-header.scrolled {
     height: 65px;
-    background: rgba(6, 6, 15, 0.9);
+    background: rgba(7, 12, 26, 0.9);
     border-bottom: 1px solid rgba(255, 255, 255, 0.12);
 }
 
@@ -250,9 +254,11 @@ p {
 }
 
 .mobile-menu-toggle span {
-    width: 22px;
-    height: 1.5px;
+    width: 26px;
+    height: 2px;
     background-color: var(--color-text-white);
+    border-radius: 2px;
+    transition: var(--transition-smooth);
 }
 
 /* 5. Sección Héroe */
@@ -271,7 +277,7 @@ p {
     left: -10%;
     width: 600px;
     height: 600px;
-    background: radial-gradient(circle, rgba(27, 221, 184, 0.08) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(74, 158, 232, 0.12) 0%, transparent 70%);
     z-index: -1;
     filter: blur(60px);
     pointer-events: none;
@@ -283,7 +289,7 @@ p {
     right: 5%;
     width: 500px;
     height: 500px;
-    background: radial-gradient(circle, rgba(167, 139, 250, 0.07) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(27, 79, 191, 0.10) 0%, transparent 70%);
     z-index: -1;
     filter: blur(50px);
     pointer-events: none;
@@ -305,8 +311,8 @@ p {
     gap: 8px;
     padding: 5px 16px;
     border-radius: 100px;
-    background: rgba(27, 221, 184, 0.08);
-    border: 1px solid rgba(27, 221, 184, 0.25);
+    background: rgba(74, 158, 232, 0.1);
+    border: 1px solid rgba(74, 158, 232, 0.3);
     width: fit-content;
     margin-bottom: 24px;
     backdrop-filter: blur(6px);
@@ -682,7 +688,7 @@ p {
     bottom: 24px;
     left: 50%;
     transform: translateX(-50%);
-    background: rgba(6, 6, 15, 0.85);
+    background: rgba(7, 12, 26, 0.85);
     border: 1px solid rgba(255, 255, 255, 0.1);
     color: rgba(255, 255, 255, 0.8);
     font-size: 0.75rem;
@@ -702,7 +708,7 @@ p {
 }
 
 .control-btn {
-    background: rgba(6, 6, 15, 0.8);
+    background: rgba(7, 12, 26, 0.8);
     border: 1px solid rgba(255, 255, 255, 0.15);
     color: rgba(255, 255, 255, 0.8);
     padding: 6px 14px;
@@ -734,7 +740,7 @@ p {
     border-left: var(--border-thin);
     display: flex;
     flex-direction: column;
-    background: rgba(6, 6, 15, 0.4);
+    background: rgba(7, 12, 26, 0.4);
     overflow-y: auto;
 }
 
@@ -1341,7 +1347,7 @@ p {
 }
 
 .challenges-container {
-    background-color: rgba(6, 6, 15, 0.95);
+    background-color: rgba(7, 12, 26, 0.95);
     border: var(--border-thin);
     border-radius: 24px;
     overflow: hidden;
@@ -1702,7 +1708,7 @@ input[type="range"]::-webkit-slider-thumb:hover {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(6, 6, 15, 0.96);
+    background-color: rgba(7, 12, 26, 0.96);
     z-index: 100;
     display: flex;
     align-items: center;
@@ -2143,18 +2149,18 @@ input[type="range"]::-webkit-slider-thumb:hover {
     height: 100vh;
     z-index: -2;
     transition: background 1.2s cubic-bezier(0.25, 1, 0.5, 1);
-    background: #06060f;
+    background: var(--bg-dark-deep);
     pointer-events: none;
 }
 
 /* Gradients específicos para cada día */
-.timeline-bg.day1 { background: radial-gradient(circle at 70% 30%, rgba(251, 191, 36, 0.08) 0%, #03030c 100%); }
-.timeline-bg.day2 { background: radial-gradient(circle at 30% 70%, rgba(27, 221, 184, 0.08) 0%, #040b17 100%); }
-.timeline-bg.day3 { background: radial-gradient(circle at 60% 40%, rgba(16, 185, 129, 0.07) 0%, #030e09 100%); }
-.timeline-bg.day4 { background: radial-gradient(circle at 40% 60%, rgba(251, 191, 36, 0.08) 0%, #02040b 100%); }
-.timeline-bg.day5 { background: radial-gradient(circle at 70% 50%, rgba(59, 130, 246, 0.07) 0%, #020813 100%); }
-.timeline-bg.day6 { background: radial-gradient(circle at 30% 40%, rgba(240, 171, 252, 0.08) 0%, #070412 100%); }
-.timeline-bg.day7 { background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.06) 0%, #05050f 100%); }
+.timeline-bg.day1 { background: radial-gradient(circle at 70% 30%, rgba(251, 191, 36, 0.08) 0%, #070C1A 100%); }
+.timeline-bg.day2 { background: radial-gradient(circle at 30% 70%, rgba(74, 158, 232, 0.12) 0%, #070C1A 100%); }
+.timeline-bg.day3 { background: radial-gradient(circle at 60% 40%, rgba(16, 185, 129, 0.07) 0%, #070C1A 100%); }
+.timeline-bg.day4 { background: radial-gradient(circle at 40% 60%, rgba(251, 191, 36, 0.08) 0%, #070C1A 100%); }
+.timeline-bg.day5 { background: radial-gradient(circle at 70% 50%, rgba(74, 158, 232, 0.10) 0%, #070C1A 100%); }
+.timeline-bg.day6 { background: radial-gradient(circle at 30% 40%, rgba(27, 79, 191, 0.10) 0%, #070C1A 100%); }
+.timeline-bg.day7 { background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.06) 0%, #070C1A 100%); }
 
 .timeline-section {
     position: relative;
@@ -2328,6 +2334,8 @@ input[type="range"]::-webkit-slider-thumb:hover {
     .timeline-item {
         flex-direction: column !important;
         align-items: stretch;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
         margin-bottom: 48px;
         gap: 16px;
         padding: 0 5%;
@@ -3073,7 +3081,7 @@ input[type="range"]::-webkit-slider-thumb:hover {
 .ask-success-card {
     position: absolute;
     inset: 0;
-    background: rgba(6, 6, 15, 0.96);
+    background: rgba(7, 12, 26, 0.96);
     border-radius: 22px;
     display: flex;
     flex-direction: column;
@@ -3537,7 +3545,7 @@ input[type="range"]::-webkit-slider-thumb:hover {
 /* Tarjeta de Cita Bíblica Destacada en Fe y Ciencia */
 .quote-card.quote-card--biblical {
     position: relative;
-    background: linear-gradient(135deg, rgba(251, 191, 36, 0.1) 0%, rgba(6, 6, 15, 0.95) 100%);
+    background: linear-gradient(135deg, rgba(251, 191, 36, 0.1) 0%, rgba(7, 12, 26, 0.95) 100%);
     border: 1px solid rgba(251, 191, 36, 0.35);
     border-left: 5px solid var(--color-amber);
     box-shadow: 0 0 40px rgba(251, 191, 36, 0.2);
@@ -3897,14 +3905,15 @@ input[type="range"]::-webkit-slider-thumb:hover {
         flex-direction: column;
         align-items: flex-start;
         gap: 0;
-        background: rgba(6, 6, 15, 0.97);
+        background: rgba(7, 12, 26, 0.97);
         backdrop-filter: blur(20px);
         -webkit-backdrop-filter: blur(20px);
         border-bottom: var(--border-thin);
         padding: 16px 5%;
         z-index: 999;
     }
-    .nav-links.open {
+    .nav-links.open,
+    .nav-links.active {
         display: flex;
     }
     .nav-links a {
@@ -3923,6 +3932,18 @@ input[type="range"]::-webkit-slider-thumb:hover {
     }
     .mobile-menu-toggle {
         display: flex;
+    }
+    .mobile-menu-toggle.open span:nth-child(1),
+    .mobile-menu-toggle.active span:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+    .mobile-menu-toggle.open span:nth-child(2),
+    .mobile-menu-toggle.active span:nth-child(2) {
+        opacity: 0;
+    }
+    .mobile-menu-toggle.open span:nth-child(3),
+    .mobile-menu-toggle.active span:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
     }
 
     /* ===== HERO (index.html) ===== */
@@ -4092,6 +4113,28 @@ input[type="range"]::-webkit-slider-thumb:hover {
     .base-selection-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 8px;
+    }
+    .challenges-container {
+        border-radius: 16px;
+    }
+    .game-wrapper {
+        padding: 24px 16px;
+    }
+    .game-quiz-area {
+        padding: 12px 8px;
+        gap: 20px;
+    }
+    .quiz-container {
+        padding: 16px;
+        min-height: auto;
+    }
+    .quiz-question-text {
+        font-size: 1.15rem;
+        margin-bottom: 16px;
+    }
+    .quiz-option-btn {
+        padding: 10px 14px;
+        font-size: 0.85rem;
     }
 
     /* ===== FE Y CIENCIA (fe-ciencia.html) ===== */

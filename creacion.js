@@ -8,6 +8,22 @@ document.addEventListener('DOMContentLoaded', () => {
             mobileMenuToggle.classList.toggle('active');
             navLinks.classList.toggle('active');
         });
+
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    mobileMenuToggle.classList.remove('active');
+                    navLinks.classList.remove('active');
+                }
+            });
+        });
+
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) {
+                mobileMenuToggle.classList.remove('active');
+                navLinks.classList.remove('active');
+            }
+        });
     }
 
     // 2. Control de la Cabecera Scrolled
