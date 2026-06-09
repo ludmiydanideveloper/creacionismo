@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="es" style="background:#06060f;color-scheme:dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diseño y Fe: Viaje a los Orígenes | Museo Virtual Creacionista</title>
+    <meta name="description" content="Explora las maravillas del cosmos y el diseño biológico a través de un viaje interactivo de ciencia y fe. Inspirado en el diseño digital inmersivo de alta fidelidad.">
+    <!-- Fonts de lujo: Clash Display para títulos y Satoshi para contenido de Fontshare -->
+    <link href="https://api.fontshare.com/v2/css?f[]=clash-display@300,400,500,600,700&f[]=satoshi@300,400,500,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <!-- Three.js y OrbitControls para los modelos 3D interactivos -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+</head>
+<body>
+    <!-- Fondo de Canvas para el cosmos y estrellas interactivo -->
+    <canvas id="cosmos-canvas"></canvas>
+
+    <!-- Navegación Flotante Premium Estilo Loop Studio -->
+    <header class="main-header">
+        <div class="logo">
+            <svg viewBox="0 0 24 24" class="logo-icon">
+                <path d="M12,2A10,10,0,1,0,22,12,10,10,0,0,0,12,2Zm1,17.93V16a1,1,0,0,0-2,0v3.93A8,8,0,0,1,4.07,13H8a1,1,0,0,0,0-2H4.07A8,8,0,0,1,11,4.07V8a1,1,0,0,0,2,0V4.07A8,8,0,0,1,19.93,11H16a1,1,0,0,0,0,2h3.93A8,8,0,0,1,13,19.93Z" fill="currentColor"/>
+            </svg>
+            <span class="logo-text">INSTITUTO ADVENTISTA</span>
+        </div>
+        <nav class="nav-links">
+            <a href="#inicio" class="active">Inicio</a>
+            <a href="#salas">Salas</a>
+            <a href="creacion.html">Creación</a>
+            <a href="fe-ciencia.html">Fe y Ciencia</a>
+            <a href="laboratorio.html">Laboratorio</a>
+            <a href="#zona-desafios" class="nav-btn-highlight">Zona de Desafíos</a>
+        </nav>
+        <button class="mobile-menu-toggle" aria-label="Abrir menú">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </header>
+
+    <!-- Sección Héroe Estilo Loop Studio -->
+    <section id="inicio" class="hero">
+        <div class="hero-glow-1"></div>
+        <div class="hero-glow-2"></div>
+        
+        <div class="hero-content">
+            <!-- Badge Capsule -->
+            <div class="hero-badge">
+                <span class="badge-dot"></span>
+                <span>Museo Abierto y 100% Interactivo</span>
+            </div>
+            
+            <h1 class="hero-title">
+                ¿Por qué estamos aquí?<br>
+                <span class="gradient-text">Explorando el Diseño Inteligente.</span>
+            </h1>
+            
+            <h2 class="hero-subtitle-description">
+                Te damos la bienvenida a un viaje donde la ciencia moderna revela huellas de propósito, orden y un diseño intencional en el universo y la vida misma. Explora nuestras salas virtuales a tu propio ritmo.
+            </h2>
+            
+            <div class="hero-actions">
+                <a href="#salas" class="btn btn-primary-gradient">
+                    Iniciar Recorrido
+                    <svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7v10"></path>
+                    </svg>
+                </a>
+                <a href="#zona-desafios" class="btn btn-outline-white">
+                    Ver Desafíos
+                    <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.3">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </a>
+            </div>
+
+            <!-- Tags del Héroe -->
+            <div class="hero-tags-wrapper">
+                <span class="hero-tag">WebGL 3D</span>
+                <span class="hero-tag">Ajuste Fino</span>
+                <span class="hero-tag">Código ADN</span>
+                <span class="hero-tag">Cosmología</span>
+                <span class="hero-tag">Fósiles</span>
+            </div>
+
+            <!-- Fila de Estadísticas -->
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <div class="stat-number">3</div>
+                    <div class="stat-label">Salas Virtuales</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">10<sup>60</sup></div>
+                    <div class="stat-label">Ajuste Fino</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Interactivo</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">4</div>
+                    <div class="stat-label">Bases de Código</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Contenedor del Átomo y ADN 3D interactivos -->
+        <div class="hero-visual">
+            <div class="glow-sphere"></div>
+            <!-- canvas de ThreeJS -->
+            <div id="hero-interactive-canvas"></div>
+        </div>
+    </section>
+
+    <!-- Línea divisoria de brillo (Shimmer Line Divider) -->
+    <div class="divider-container">
+        <div class="divider-line">
+            <div class="divider-shimmer"></div>
+        </div>
+    </div>
+
+    <!-- Sección de Salas (Featured Projects Layout) -->
+    <section id="salas" class="rooms-section">
+        <div class="section-label">
+            <span class="badge-dot"></span> Salas de Exposición
+        </div>
+        
+        <div class="rooms-section-header">
+            <h2>Evidencias que Hablan<br><span class="gradient-text">por sí Mismas.</span></h2>
+            <p>Exposiciones que presentan el diseño inteligente y la complejidad del cosmos y la vida.</p>
+        </div>
+        
+        <div class="rooms-grid">
+            <!-- Sala 1 Card -->
+            <div class="room-card">
+                <div class="card-top-glow bg-teal"></div>
+                <div class="card-body">
+                    <div class="card-tags">
+                        <span class="card-tag tag-red">SALA 1 × BIOLOGÍA MOLECULAR</span>
+                        <span class="card-status-live"><span class="live-dot red"></span>INTERACTIVO</span>
+                    </div>
+                    <h3>Sala 1 — El ADN — Un Idioma Escrito en la Vida</h3>
+                    <p>Demostrar la increíble complejidad de la información biológica. Explora cómo una sola célula humana contiene suficiente información digital para llenar 1,000 libros.</p>
+                    <div class="card-footer-action text-red">
+                        <span>Manipular ADN 3D</span>
+                        <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7v10"></path>
+                        </svg>
+                    </div>
+                </div>
+                <a href="#sala-adn" class="card-overlay-link" aria-label="Ir a Sala 1"></a>
+            </div>
+
+            <!-- Sala 2 Card -->
+            <div class="room-card">
+                <div class="card-top-glow bg-purple"></div>
+                <div class="card-body">
+                    <div class="card-tags">
+                        <span class="card-tag tag-purple">SALA 2 × AJUSTE FINO</span>
+                        <span class="card-status-live"><span class="live-dot purple"></span>SIMULADOR</span>
+                    </div>
+                    <h3>Sala 2 — El Reloj de Dios — Un Universo Preciso</h3>
+                    <p>Objetivo: Explicar cómo el universo parece estar "calibrado" con precisión para la vida humana. Analiza las constantes físicas elementales en tiempo real.</p>
+                    <div class="card-footer-action text-purple">
+                        <span>Ver Constantes</span>
+                        <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7v10"></path>
+                        </svg>
+                    </div>
+                </div>
+                <a href="#sala-fisica" class="card-overlay-link" aria-label="Ir a Sala 2"></a>
+            </div>
+
+            <!-- Sala 3 Card -->
+            <div class="room-card">
+                <div class="card-top-glow bg-amber"></div>
+                <div class="card-body">
+                    <div class="card-tags">
+                        <span class="card-tag tag-amber">SALA 3 × COMPLEJIDAD IRREDUCIBLE</span>
+                        <span class="card-status-live"><span class="live-dot amber"></span>EXPLORADOR</span>
+                    </div>
+                    <h3>Sala 3 — Huellas de Diseño — Sistemas Complejos</h3>
+                    <p>Objetivo: Analizar cómo los sistemas biológicos complejos y el registro fósil desafían las explicaciones puramente naturalistas. Explora evidencias biológicas y estratigráficas.</p>
+                    <div class="card-footer-action text-amber">
+                        <span>Explorar Fósiles</span>
+                        <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7v10"></path>
+                        </svg>
+                    </div>
+                </div>
+                <a href="#sala-fosiles" class="card-overlay-link" aria-label="Ir a Sala 3"></a>
+            </div>
+        </div>
+
+        <div class="rooms-view-all">
+            <a href="#zona-desafios" class="btn btn-outline-white">
+                Ir a Zona de Desafíos
+                <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7v10"></path>
+                </svg>
+            </a>
+        </div>
+    </section>
+
+    <!-- Línea divisoria de brillo -->
+    <div class="divider-container">
+        <div class="divider-line">
+            <div class="divider-shimmer"></div>
+        </div>
+    </div>
+
+    <!-- Sala 1: Visualizador Interactivo 3D de ADN -->
+    <section id="sala-adn" class="interactive-viewer-section">
+        <div class="section-label">
+            <span class="badge-dot"></span> El Código de la Vida (Biología Molecular)
+        </div>
+        <div class="rooms-section-header left-aligned">
+            <h2>El ADN — <span class="gradient-text">Un Idioma Escrito en la Vida</span></h2>
+            <p style="margin-bottom: 12px; color: var(--color-teal); font-weight: 500; font-size: 0.95rem;">
+                <strong>Objetivo:</strong> Demostrar la increíble complejidad de la información biológica.
+            </p>
+            <p>Manipula la estructura 3D en tiempo real. Haz clic en las bases nitrogenadas o en la espina dorsal para analizar su información.</p>
+        </div>
+
+        <div class="viewer-container">
+            <!-- Contenedor del Canvas 3D -->
+            <div class="canvas-3d-wrapper">
+                <div id="dna-canvas-3d"></div>
+                <div class="canvas-instructions">
+                    Clic en los elementos para decodificar
+                </div>
+                
+                <!-- Controles del visualizador -->
+                <div class="viewer-controls">
+                    <button id="btn-spin-toggle" class="control-btn active">Autorotación</button>
+                    <button id="btn-glow-toggle" class="control-btn active">Brillo Estelar</button>
+                    <button id="btn-reset-view" class="control-btn">Restablecer</button>
+                </div>
+            </div>
+
+            <!-- Panel de Información e Interactividad -->
+            <div class="viewer-sidebar">
+                <div class="sidebar-header">
+                    <h3>Decodificador Genético</h3>
+                    <p class="sidebar-status">Selecciona un elemento en el modelo 3D</p>
+                </div>
+                
+                <div id="nucleotide-info-default" class="info-content active">
+                    <div class="dna-intro-points">
+                        <div class="dna-point-card">
+                            <div class="point-icon">📚</div>
+                            <div class="point-text">
+                                <strong>El ADN como manual:</strong> ¿Sabías que el ADN es como un manual de instrucciones increíblemente denso? Una sola célula humana contiene suficiente información digital para llenar 1,000 libros.
+                            </div>
+                        </div>
+                        <div class="dna-point-card">
+                            <div class="point-icon">🧠</div>
+                            <div class="point-text">
+                                <strong>Origen de la información:</strong> La información compleja siempre proviene de una mente inteligente. No hay procesos naturales conocidos que puedan crear información compleja desde cero (ej: un libro no se escribe solo por casualidad).
+                            </div>
+                        </div>
+                        <div class="dna-point-tip">
+                            <span>🖱️ Haz clic en cualquier base nitrogenada (A, T, C, G) o en la espina dorsal en el visualizador 3D para revelar más evidencias científicas.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="nucleotide-info-active" class="info-content">
+                    <div class="base-badge" id="base-name-badge">Adenina (A)</div>
+                    <h4 id="base-full-name">Adenina</h4>
+                    <div class="base-pair-status">Enlace complementario: <strong id="base-pairing-info">Timina (T)</strong></div>
+                    <p id="base-description">Descripción del nucleótido y su enlace químico covalente.</p>
+                    
+                    <div class="design-insight">
+                        <h5>💡 Evidencia de Diseño</h5>
+                        <p id="base-insight">Análisis teórico de información molecular compleja especificada.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sala 2: Constantes Físicas -->
+    <section id="sala-fisica" class="physics-section">
+        <div class="physics-container">
+            <div class="physics-text">
+                <span class="section-tag">El Ajuste Fino del Universo</span>
+                <h2>El Reloj de Dios — <span class="gradient-text">Un Universo Preciso</span></h2>
+                <p style="color: var(--color-purple); font-weight: 500; font-size: 0.95rem; margin-bottom: 20px;">
+                    <strong>Objetivo:</strong> Explicar cómo el universo parece estar "calibrado" con precisión para la vida humana.
+                </p>
+                
+                <div class="fine-tuning-points">
+                    <div class="ft-point">
+                        <span class="ft-icon">🎯</span>
+                        <p>Los científicos han descubierto que si las fuerzas fundamentales del universo (como la gravedad o la fuerza nuclear fuerte) cambiaran apenas una fracción infinitesimal, la vida no sería posible. Es como si alguien hubiera calibrado cada "dial" del universo exactamente donde debe estar.</p>
+                    </div>
+                    <div class="ft-point">
+                        <span class="ft-icon">⚙️</span>
+                        <p>Esto se conoce como "Ajuste Fino" o <em>Fine-tuning</em>. La probabilidad de que esto sucediera por azar es tan baja que sugiere fuertemente un diseño inteligente.</p>
+                    </div>
+                </div>
+                
+                <p style="font-size: 0.82rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--color-text-low); margin-top: 30px; margin-bottom: 12px;">Valores Matemáticos de Calibración:</p>
+                
+                <div class="constants-list">
+                    <div class="constant-item">
+                        <span class="c-number">10<sup>60</sup></span>
+                        <div>
+                            <strong>Fuerza de Gravedad (G)</strong>
+                            <p>Una alteración de solo 1 parte en 10<sup>60</sup> habría impedido que las galaxias o estrellas se formaran de manera estable.</p>
+                        </div>
+                    </div>
+                    <div class="constant-item">
+                        <span class="c-number">10<sup>120</sup></span>
+                        <div>
+                            <strong>Constante Cosmológica (Λ)</strong>
+                            <p>Rige el ritmo de expansión espacial. Su nivel de sintonización y calibración es de una precisión matemática de 1 en 10<sup>120</sup>.</p>
+                        </div>
+                    </div>
+                    <div class="constant-item">
+                        <span class="c-number">0.007</span>
+                        <div>
+                            <strong>Fuerza Nuclear Fuerte</strong>
+                            <p>Calibra la cohesión de los átomos. Un valor de 0.006 haría imposible formar elementos pesados; 0.008 fusionaría todo el hidrógeno en el Big Bang.</p>
+                        </div>
+                    </div>
+                </div>
+                <a href="#zona-desafios" class="btn btn-primary-gradient">
+                    Probar el Simulador
+                    <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </a>
+            </div>
+            
+            <div class="physics-visual">
+                <div id="galaxy-3d-container" class="galaxy-container">
+                    <canvas id="galaxy-3d-canvas"></canvas>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Línea divisoria de brillo -->
+    <div class="divider-container">
+        <div class="divider-line">
+            <div class="divider-shimmer"></div>
+        </div>
+    </div>
+
+    <!-- Sala 3: Fósiles y Complejidad -->
+    <section id="sala-fosiles" class="fossils-section">
+        <div class="section-label">
+            <span class="badge-dot"></span> El Registro de la Complejidad (Paleontología/Complejidad Irreducible)
+        </div>
+        <div class="rooms-section-header">
+            <h2>Huellas de Diseño — <span class="gradient-text">Sistemas Complejos</span></h2>
+            <p style="color: var(--color-amber); font-weight: 500; font-size: 0.95rem; margin-bottom: 24px;">
+                <strong>Objetivo:</strong> Analizar cómo los sistemas biológicos complejos y el registro fósil desafían las explicaciones puramente naturalistas.
+            </p>
+            
+            <div class="complexity-points">
+                <div class="cx-point">
+                    <span class="cx-icon">⚙️</span>
+                    <div>
+                        <strong>Complejidad Irreducible</strong>
+                        <p>Muchos sistemas biológicos (como el flagelo bacteriano o el ojo humano) son como una ratonera: no funcionan a menos que todas sus partes estén presentes y en el lugar exacto. No pueden evolucionar gradualmente paso a paso, ya que los pasos intermedios no tendrían función. Esto sugiere que fueron diseñados completos desde el inicio.</p>
+                    </div>
+                </div>
+                <div class="cx-point">
+                    <span class="cx-icon">🧬</span>
+                    <div>
+                        <strong>El Registro Fósil</strong>
+                        <p>En lugar de mostrar gradaciones infinitas, muchos de los principales grupos de animales aparecen de forma repentina y completamente formados, como en la Explosión Cámbrica.</p>
+                    </div>
+                </div>
+            </div>
+
+            <p style="font-size: 0.82rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--color-text-low); margin-top: 40px; margin-bottom: 20px;">Casos de Estudio Interactivos:</p>
+        </div>
+
+        <div class="fossils-explorer">
+            <div class="fossil-tabs">
+                <button class="fossil-tab active" data-fossil="trilobite">
+                    <span>El Trilobite</span>
+                </button>
+                <button class="fossil-tab" data-fossil="nautilus">
+                    <span>El Nautilus</span>
+                </button>
+                <button class="fossil-tab" data-fossil="cambrico">
+                    <span>Explosión Cámbrica</span>
+                </button>
+            </div>
+
+            <div class="fossil-content-wrapper">
+                <!-- Trilobite -->
+                <div class="fossil-detail active" id="fossil-trilobite">
+                    <div class="fossil-img-placeholder">
+                        <img src="img/trilobite.png" alt="Ojo de Trilobite" class="fossil-real-img">
+                        <div class="glow-fossil"></div>
+                    </div>
+                    <div class="fossil-text">
+                        <h4>El Complejo Ojo del Trilobite</h4>
+                        <p>Los trilobites poseían ojos compuestos formados por lentes de calcita pura, sintonizados de manera exacta para evitar la aberración esférica (diseño de lentes doblete de Huygens-Descartes). Esta sofisticada ingeniería de visualización aparece de forma completa y funcional en el registro fósil más antiguo.</p>
+                        <div class="evidence-box">
+                            <strong>🧬 Evidencia:</strong> Ingeniería óptica compleja que no muestra formas evolutivas intermedias o precursores más simples en los estratos precedentes.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Nautilus -->
+                <div class="fossil-detail" id="fossil-nautilus">
+                    <div class="fossil-img-placeholder">
+                        <img src="img/nautilus.png" alt="Espiral del Nautilus" class="fossil-real-img">
+                        <div class="glow-fossil"></div>
+                    </div>
+                    <div class="fossil-text">
+                        <h4>La Espiral Logarítmica del Nautilus</h4>
+                        <p>La concha del Nautilus sigue con exactitud la espiral áurea o logarítmica. A medida que el Nautilus crece, crea nuevas cámaras internas de flotación que aumentan de tamaño bajo una fórmula matemática de proporción perfecta que le permite controlar la profundidad en el mar.</p>
+                        <div class="evidence-box">
+                            <strong>📐 Evidencia:</strong> Una ley geométrica matemática abstracta aplicada directamente a la anatomía y física marina del organismo para optimizar su supervivencia.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cambrian -->
+                <div class="fossil-detail" id="fossil-cambrico">
+                    <div class="fossil-img-placeholder">
+                        <img src="img/cambrico.png" alt="Burgess Shale Fósiles" class="fossil-real-img">
+                        <div class="glow-fossil"></div>
+                    </div>
+                    <div class="fossil-text">
+                        <h4>La Explosión Cámbrica</h4>
+                        <p>En el estrato geológico del Cámbrico aparecen de forma súbita y simultánea la mayoría de los grandes filos animales complejos, completamente equipados con caparazones, ojos compuestos, patas y sistemas digestivos, contradiciendo el gradualismo darwiniano.</p>
+                        <div class="evidence-box">
+                            <strong>⌛ Evidencia:</strong> Aparición biológica explosiva y ausencia sistemática de formas de transición en los sedimentos precámbricos inferiores.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Línea divisoria de brillo -->
+    <div class="divider-container">
+        <div class="divider-line">
+            <div class="divider-shimmer"></div>
+        </div>
+    </div>
+
+    <!-- Sección: Zona de Desafíos (Mini-juegos) Estilo Loop Studio Contact Banner -->
+    <section id="zona-desafios" class="challenges-section">
+        <div class="challenges-banner">
+            <div class="banner-gradient-bg"></div>
+            <div class="banner-inner">
+                <div class="section-label centered">
+                    <span class="badge-dot active"></span> Zona de Mini-juegos Interactivos
+                </div>
+                
+                <h2>
+                    <svg viewBox="0 0 24 24" width="36" height="36" class="play-section-icon" style="vertical-align: middle; margin-right: 8px; color: var(--color-teal); fill: currentColor; display: inline-block; animation: pulse 2s ease-in-out infinite;">
+                        <path d="M8,5.14L19,12.14L8,19.14V5.14Z"/>
+                    </svg>Zona de Desafíos
+                </h2>
+                
+                <p class="challenges-intro-desc">
+                    Pon a prueba las constantes físicas del cosmos y ensambla la doble hélice de ADN. ¿Estás listo para interactuar con el diseño?
+                </p>
+
+                <div class="challenges-tabs">
+                    <button class="challenge-tab active" data-game="game-adjust">
+                        <span class="game-icon">⚙️</span> Ajuste Fino Cósmico
+                    </button>
+                    <button class="challenge-tab" data-game="game-code">
+                        <span class="game-icon">🧬</span> Replicador de Código
+                    </button>
+                    <button class="challenge-tab" data-game="game-quiz">
+                        <span class="game-icon">📝</span> ¿Cuánto Aprendiste?
+                    </button>
+                </div>
+
+                <div class="challenges-container">
+                    <!-- JUEGO 1: SIMULADOR DE AJUSTE FINO -->
+                    <div class="game-wrapper active" id="game-adjust">
+                        <div class="game-intro">
+                            <h3>Ajuste Fino de las Constantes</h3>
+                            <p>Desliza los parámetros físicos fundamentales. Para que exista la vida en el universo, las constantes deben estar calibradas de forma ultra precisa. ¡Modifica los parámetros para simular el cosmos!</p>
+                        </div>
+                        
+                        <div class="game-play-area">
+                            <div class="sliders-panel">
+                                <!-- Fuerza de Gravedad -->
+                                <div class="slider-group">
+                                    <div class="slider-label">
+                                        <span>Fuerza Gravitacional (G)</span>
+                                        <span class="val-display text-teal" id="val-gravity">1.0000x</span>
+                                    </div>
+                                    <input type="range" id="slide-gravity" min="0.0" max="2.0" step="0.005" value="1.0">
+                                    <span class="slider-info">Determina la atracción entre galaxias y materia</span>
+                                </div>
+
+                                <!-- Fuerza Nuclear Fuerte -->
+                                <div class="slider-group">
+                                    <div class="slider-label">
+                                        <span>Fuerza Nuclear Fuerte</span>
+                                        <span class="val-display text-purple" id="val-nuclear">0.0070</span>
+                                    </div>
+                                    <input type="range" id="slide-nuclear" min="0.002" max="0.012" step="0.0001" value="0.007">
+                                    <span class="slider-info">Enlaza protones/neutrones; rige la tabla periódica</span>
+                                </div>
+
+                                <!-- Constante Cosmológica -->
+                                <div class="slider-group">
+                                    <div class="slider-label">
+                                        <span>Constante Cosmológica (Λ)</span>
+                                        <span class="val-display text-pink" id="val-cosmo">1.0000x</span>
+                                    </div>
+                                    <input type="range" id="slide-cosmo" min="0.0" max="2.0" step="0.005" value="1.0">
+                                    <span class="slider-info">Determina la velocidad de expansión del vacío espacial</span>
+                                </div>
+
+                                <!-- Masa del Protón -->
+                                <div class="slider-group">
+                                    <div class="slider-label">
+                                        <span>Masa de Protones</span>
+                                        <span class="val-display text-amber" id="val-proton">1.0000x</span>
+                                    </div>
+                                    <input type="range" id="slide-proton" min="0.5" max="1.5" step="0.005" value="1.0">
+                                    <span class="slider-info">Afecta los niveles de energía orbital electrónica</span>
+                                </div>
+                                
+                                <button id="btn-reset-universe" class="btn btn-outline-white btn-sm">Calibración Original</button>
+                            </div>
+
+                            <div class="visual-feedback-panel">
+                                <!-- El universo interactivo que reacciona a los sliders -->
+                                <div class="universe-simulator">
+                                    <div class="universe-bg-glow" id="universe-glow"></div>
+                                    <div class="universe-result-text" id="universe-status">Cargando simulador...</div>
+                                    <div class="star-system" id="sim-star-system">
+                                        <div class="sim-star" id="sim-main-star"></div>
+                                        <div class="sim-planet" id="sim-planet-1"></div>
+                                    </div>
+                                </div>
+                                
+                                <div class="universe-verdict-box" id="universe-verdict">
+                                    <h4 class="text-teal">ESTADO DE HABITABILIDAD:</h4>
+                                    <p id="universe-verdict-desc">El universo se encuentra perfectamente balanceado para sostener química compleja y vida orgánica.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- JUEGO 2: ENSAMBLADOR DEL CÓDIGO -->
+                    <div class="game-wrapper" id="game-code">
+                        <div class="game-intro">
+                            <h3>Replicador Genético</h3>
+                            <p>Une las bases complementarias de la hebra de ADN antes de que finalice el tiempo. Recuerda la regla de apareamiento: <strong>A con T</strong>, y <strong>C con G</strong>. ¡Genera información funcional!</p>
+                        </div>
+
+                        <div class="game-play-area game-dna-area">
+                            <div class="game-stats">
+                                <div class="stat-box">Puntos: <strong id="game-points" class="text-teal">0</strong></div>
+                                <div class="stat-box">Tiempo: <strong id="game-timer" class="text-pink">30</strong>s</div>
+                                <div class="stat-box">Precisión: <strong id="game-accuracy" class="text-amber">100%</strong></div>
+                            </div>
+
+                            <div class="dna-game-board">
+                                <div class="falling-strand-container">
+                                    <div class="falling-label">Nucleótido Requerido:</div>
+                                    <div class="active-falling-base" id="required-base">-</div>
+                                    <div class="arrow-down text-teal">⬇️</div>
+                                </div>
+
+                                <div class="user-selection-area">
+                                    <p>Presiona el nucleótido complementario correspondiente:</p>
+                                    <div class="base-selection-grid">
+                                        <button class="base-btn btn-a" data-base="A">Adenina (A)</button>
+                                        <button class="base-btn btn-t" data-base="T">Timina (T)</button>
+                                        <button class="base-btn btn-c" data-base="C">Citocina (C)</button>
+                                        <button class="base-btn btn-g" data-base="G">Guanina (G)</button>
+                                    </div>
+                                </div>
+                                
+                                <!-- Cadena resultante que el usuario construye -->
+                                <div class="constructed-strand" id="strand-preview">
+                                    <!-- Dinámico -->
+                                </div>
+                            </div>
+
+                            <div class="game-overlay" id="game-overlay">
+                                <div class="overlay-content">
+                                    <h4 id="game-title">¿Listo para Replicar?</h4>
+                                    <p id="game-message">Combina los pares nitrogenados para formar la doble hélice biológica de forma ideal (A-T / C-G).</p>
+                                    <button id="btn-start-game" class="btn btn-primary-gradient">Iniciar Código</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- JUEGO 3: CUESTIONARIO Y RESEÑA -->
+                    <div class="game-wrapper" id="game-quiz">
+                        <div class="game-intro">
+                            <h3>Desafío Final: ¿Cuánto Aprendiste?</h3>
+                            <p>Demuestra tus conocimientos sobre el diseño inteligente y deja tu reseña sobre tu experiencia en el museo.</p>
+                        </div>
+
+                        <div class="game-play-area game-quiz-area">
+                            <!-- QUIZ CONTAINER -->
+                            <div class="quiz-container" id="quiz-container">
+                                <div class="quiz-question-card" id="quiz-question-card">
+                                    <div class="quiz-progress" id="quiz-progress">Pregunta 1 de 3</div>
+                                    <h4 class="quiz-question-text" id="quiz-question-text">¿Qué es la "Complejidad Irreducible"?</h4>
+                                    <div class="quiz-options-grid" id="quiz-options-grid">
+                                        <!-- Opciones dinámicas -->
+                                    </div>
+                                </div>
+                                
+                                <div class="quiz-results-card" id="quiz-results-card" style="display: none;">
+                                    <div class="success-check">🎉</div>
+                                    <h4>¡Cuestionario Completado!</h4>
+                                    <p>Tu puntuación es de <strong id="quiz-score" class="text-teal">0/3</strong>.</p>
+                                    <p id="quiz-verdict" class="text-muted">¡Buen esfuerzo! Continúa explorando las salas para profundizar.</p>
+                                    <button id="btn-restart-quiz" class="btn btn-outline-white btn-sm" style="margin-top: 15px;">Intentar de Nuevo</button>
+                                </div>
+                            </div>
+
+                            <!-- REVIEW CONTAINER -->
+                            <div class="review-container">
+                                <h3>Deja tu Reseña</h3>
+                                <p class="text-muted" style="font-size: 0.82rem; margin-bottom: 15px;">Comparte tu opinión sobre el museo virtual del Instituto Adventista Iabar.</p>
+                                
+                                <form id="review-form" class="review-form">
+                                    <div class="star-rating">
+                                        <button type="button" class="star-btn active" data-star="1">★</button>
+                                        <button type="button" class="star-btn active" data-star="2">★</button>
+                                        <button type="button" class="star-btn active" data-star="3">★</button>
+                                        <button type="button" class="star-btn active" data-star="4">★</button>
+                                        <button type="button" class="star-btn active" data-star="5">★</button>
+                                        <input type="hidden" id="review-stars-val" value="5">
+                                    </div>
+                                    <div class="review-fields">
+                                        <input type="text" id="review-name" placeholder="Tu Nombre" required>
+                                        <textarea id="review-comment" placeholder="¿Qué fue lo que más te gustó del museo?" rows="3" required></textarea>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary-gradient btn-sm" style="width: 100%; margin-top: 10px;">Publicar Reseña</button>
+                                </form>
+
+                                <div class="review-success-card" id="review-success" style="display: none;">
+                                    <div class="success-check">✓</div>
+                                    <h4>¡Gracias por tu opinión!</h4>
+                                    <p>Tu reseña ha sido publicada con éxito en el mural del museo.</p>
+                                    <button id="btn-reset-review" class="btn btn-outline-white btn-sm" style="margin-top: 15px;">Escribir otra reseña</button>
+                                </div>
+                                
+                                <!-- Mural de Reseñas de Alumnos -->
+                                <div class="reviews-board">
+                                    <h5>Mural de Visitas (Alumnos de Iabar)</h5>
+                                    <div class="reviews-board-list" id="reviews-board-list">
+                                        <div class="student-review-item">
+                                            <div class="review-item-header">
+                                                <strong>Benjamín S.</strong>
+                                                <span class="stars text-amber">★★★★★</span>
+                                            </div>
+                                            <p>"¡Me encantó el simulador de ADN en 3D! Es increíble cómo se complementan las bases."</p>
+                                        </div>
+                                        <div class="student-review-item">
+                                            <div class="review-item-header">
+                                                <strong>Sofía M.</strong>
+                                                <span class="stars text-amber">★★★★★</span>
+                                            </div>
+                                            <p>"La sala del Ajuste Fino es impresionante, los gráficos y mover los controles te hace entender la precisión."</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Estilo Loop Studio -->
+    <footer class="main-footer">
+        <div class="footer-glow"></div>
+        <div class="footer-top">
+            <div class="footer-brand">
+                <svg viewBox="0 0 24 24" class="logo-icon-footer">
+                    <path d="M12,2A10,10,0,1,0,22,12,10,10,0,0,0,12,2Zm1,17.93V16a1,1,0,0,0-2,0v3.93A8,8,0,0,1,4.07,13H8a1,1,0,0,0,0-2H4.07A8,8,0,0,1,11,4.07V8a1,1,0,0,0,2,0V4.07A8,8,0,0,1,19.93,11H16a1,1,0,0,0,0,2h3.93A8,8,0,0,1,13,19.93Z" fill="currentColor"/>
+                </svg>
+                <span>INSTITUTO ADVENTISTA · IABAR</span>
+            </div>
+            
+            <p class="footer-quote">
+                "Los cielos cuentan la gloria de Dios, y el firmamento anuncia la obra de sus manos."
+                <span class="quote-author">— Salmo 19:1</span>
+            </p>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="footer-links">
+                <a href="#inicio">Inicio</a>
+                <a href="#salas">Salas de Exposición</a>
+                <a href="#sala-adn">Sala 1 — ADN 3D</a>
+                <a href="#sala-fisica">Sala 2 — Constantes</a>
+                <a href="creacion.html">Creación</a>
+                <a href="fe-ciencia.html">Fe y Ciencia</a>
+                <a href="laboratorio.html">Laboratorio Escolar</a>
+                <a href="#zona-desafios">Zona de Desafíos</a>
+            </div>
+            
+            <p class="footer-copy">
+                &copy; 2026 Museo Virtual 'Diseño y Fe' · Instituto Adventista Iabar. Todos los derechos reservados.
+            </p>
+        </div>
+    </footer>
+
+
+
+    <!-- Lógica JavaScript interactiva -->
+    <script src="app.js"></script>
+</body>
+</html>

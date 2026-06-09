@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="es" style="background:#06060f;color-scheme:dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laboratorio Escolar — Nuestros Investigadores en Acción | Iabar</title>
+    <meta name="description" content="Galería del Laboratorio Escolar Iabar. Proyectos de microscopía, bitácoras de campo y modelos anatómicos de nuestros alumnos investigadores.">
+    <link href="https://api.fontshare.com/v2/css?f[]=clash-display@300,400,500,600,700&f[]=satoshi@300,400,500,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="laboratorio.css">
+</head>
+<body>
+
+    <!-- Fondo partículas -->
+    <canvas id="lab-canvas" style="position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:-2;pointer-events:none;"></canvas>
+
+    <!-- ===== NAV ===== -->
+    <header class="main-header">
+        <div class="logo">
+            <svg viewBox="0 0 24 24" class="logo-icon">
+                <path d="M12,2A10,10,0,1,0,22,12,10,10,0,0,0,12,2Zm1,17.93V16a1,1,0,0,0-2,0v3.93A8,8,0,0,1,4.07,13H8a1,1,0,0,0,0-2H4.07A8,8,0,0,1,11,4.07V8a1,1,0,0,0,2,0V4.07A8,8,0,0,1,19.93,11H16a1,1,0,0,0,0,2h3.93A8,8,0,0,1,13,19.93Z" fill="currentColor"/>
+            </svg>
+            <span class="logo-text">INSTITUTO ADVENTISTA</span>
+        </div>
+        <nav class="nav-links">
+            <a href="index.html#inicio">Inicio</a>
+            <a href="index.html#salas">Salas</a>
+            <a href="creacion.html">Creación</a>
+            <a href="fe-ciencia.html">Fe y Ciencia</a>
+            <a href="laboratorio.html" class="active">Laboratorio</a>
+            <a href="index.html#zona-desafios" class="nav-btn-highlight">Zona de Desafíos</a>
+        </nav>
+        <button class="mobile-menu-toggle" aria-label="Abrir menú">
+            <span></span><span></span><span></span>
+        </button>
+    </header>
+
+    <!-- ===== HERO ===== -->
+    <header class="lab-hero">
+        <!-- Partículas flotantes decorativas -->
+        <div class="lab-hero-orb lab-hero-orb--teal"></div>
+        <div class="lab-hero-orb lab-hero-orb--purple"></div>
+
+        <div class="lab-hero-content">
+            <div class="hero-badge">
+                <span class="badge-dot"></span>
+                <span>Iabar · Ciencias Naturales</span>
+            </div>
+            <h1>Nuestros Investigadores<br><span class="gradient-text">en Acción</span></h1>
+            <p>La ciencia no se aprende solo leyendo: ¡se hace en el laboratorio! Aquí compartimos los proyectos, experimentos y descubrimientos de los alumnos de Iabar.</p>
+
+            <!-- Stats rápidos -->
+            <div class="lab-stats">
+                <div class="lab-stat">
+                    <span class="lab-stat-num" data-target="3">3</span>
+                    <span class="lab-stat-label">Galerías</span>
+                </div>
+                <div class="lab-stat-divider"></div>
+                <div class="lab-stat">
+                    <span class="lab-stat-num" data-target="12">12</span>
+                    <span class="lab-stat-label">Proyectos</span>
+                </div>
+                <div class="lab-stat-divider"></div>
+                <div class="lab-stat">
+                    <span class="lab-stat-num" id="photo-count">1</span>
+                    <span class="lab-stat-label">Fotos</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll cue -->
+        <div class="lab-scroll-cue">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+        </div>
+    </header>
+
+    <!-- ===== TABS DE GALERÍA ===== -->
+    <div class="lab-tabs-bar" id="lab-tabs">
+        <div class="lab-tabs-inner">
+            <button class="lab-tab active" data-gallery="micro" aria-selected="true">
+                <span class="lab-tab-icon">🔬</span>
+                <span>El Micro-Mundo en el Aula</span>
+                <span class="lab-tab-count" id="count-micro">—</span>
+            </button>
+            <button class="lab-tab" data-gallery="bitacora" aria-selected="false">
+                <span class="lab-tab-icon">📓</span>
+                <span>Bitácoras de Campo</span>
+                <span class="lab-tab-count" id="count-bitacora">—</span>
+            </button>
+            <button class="lab-tab" data-gallery="anatomia" aria-selected="false">
+                <span class="lab-tab-icon">🫁</span>
+                <span>Modelos Anatómicos</span>
+                <span class="lab-tab-count" id="count-anatomia">—</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- ===== PANEL: MICRO-MUNDO ===== -->
+    <section class="lab-gallery-panel active" id="panel-micro">
+        <div class="lab-panel-header">
+            <div class="section-label"><span class="badge-dot bg-teal"></span> Galería 1</div>
+            <h2>El Micro-Mundo <span class="gradient-text">en el Aula</span></h2>
+            <p>Los alumnos usaron microscopios ópticos para explorar el mundo invisible: paramecios, bacterias y microorganismos de muestras de agua. También armamos el proyecto de biosensores y frascos de agua.</p>
+        </div>
+
+
+        <div class="lab-grid" id="grid-micro">
+            <!-- Foto real (generada) -->
+            <div class="lab-card lab-card--wide reveal" data-src="img/lab-micro-1.png" data-caption="Vista al microscopio · Paramecios en muestra de agua" data-idx="0">
+                <div class="lab-card-img-wrap">
+                    <img src="img/lab-micro-1.png" alt="Vista microscópica de paramecios" loading="lazy">
+                    <div class="lab-card-overlay">
+                        <div class="lab-card-overlay-inner">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg>
+                            <p>Vista al microscopio</p>
+                            <span>Paramecios en muestra de agua</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="lab-card-label">
+                    <span class="lab-card-tag">Microscopía</span>
+                    <p>Paramecios en muestra de agua del río</p>
+                </div>
+            </div>
+
+            <!-- Placeholders -->
+            <div class="lab-card lab-placeholder reveal" data-placeholder="micro">
+                <div class="lab-placeholder-inner">
+                    <div class="lab-ph-icon">🔬</div>
+                    <p>Foto de alumnos<br>usando el microscopio</p>
+                    <span>Próximamente</span>
+                </div>
+            </div>
+            <div class="lab-card lab-placeholder reveal" data-placeholder="micro">
+                <div class="lab-placeholder-inner">
+                    <div class="lab-ph-icon">💧</div>
+                    <p>Proyecto biosensores<br>y frascos de agua</p>
+                    <span>Próximamente</span>
+                </div>
+            </div>
+            <div class="lab-card lab-placeholder reveal" data-placeholder="micro">
+                <div class="lab-placeholder-inner">
+                    <div class="lab-ph-icon">🧫</div>
+                    <p>Cultivo de muestras<br>y preparación de portaobjetos</p>
+                    <span>Próximamente</span>
+                </div>
+            </div>
+            <div class="lab-card lab-placeholder reveal" data-placeholder="micro">
+                <div class="lab-placeholder-inner">
+                    <div class="lab-ph-icon">⚗️</div>
+                    <p>Experimento con<br>agua del grifo vs. del río</p>
+                    <span>Próximamente</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== PANEL: BITÁCORAS ===== -->
+    <section class="lab-gallery-panel" id="panel-bitacora">
+        <div class="lab-panel-header">
+            <div class="section-label"><span class="badge-dot bg-purple"></span> Galería 2</div>
+            <h2>Bitácoras <span class="gradient-text">de Campo</span></h2>
+            <p>Los cuadernos de los investigadores de Iabar son obras de arte científico. Hipótesis escritas a mano, dibujos de paramecios al microscopio, tablas de observación y conclusiones que demuestran cómo piensan nuestros científicos.</p>
+        </div>
+
+
+        <div class="lab-grid" id="grid-bitacora">
+            <div class="lab-card lab-card--tall reveal" data-src="img/lab-bitacora-1.png" data-caption="Bitácora de campo · Hipótesis y dibujos de paramecios" data-idx="0">
+                <div class="lab-card-img-wrap">
+                    <img src="img/lab-bitacora-1.png" alt="Bitácora de campo con dibujos científicos" loading="lazy">
+                    <div class="lab-card-overlay">
+                        <div class="lab-card-overlay-inner">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg>
+                            <p>Bitácora de campo</p>
+                            <span>Hipótesis y dibujos de paramecios</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="lab-card-label">
+                    <span class="lab-card-tag">Bitácora</span>
+                    <p>Hipótesis y dibujos de paramecios al microscopio</p>
+                </div>
+            </div>
+
+            <div class="lab-card lab-placeholder reveal" data-placeholder="bitacora">
+                <div class="lab-placeholder-inner">
+                    <div class="lab-ph-icon">✏️</div>
+                    <p>Cuaderno con hipótesis<br>escritas a mano</p>
+                    <span>Próximamente</span>
+                </div>
+            </div>
+            <div class="lab-card lab-placeholder reveal" data-placeholder="bitacora">
+                <div class="lab-placeholder-inner">
+                    <div class="lab-ph-icon">🔍</div>
+                    <p>Dibujos científicos<br>de observaciones</p>
+                    <span>Próximamente</span>
+                </div>
+            </div>
+            <div class="lab-card lab-placeholder reveal" data-placeholder="bitacora">
+                <div class="lab-placeholder-inner">
+                    <div class="lab-ph-icon">📊</div>
+                    <p>Tablas de datos<br>y conclusiones</p>
+                    <span>Próximamente</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== PANEL: MODELOS ANATÓMICOS ===== -->
+    <section class="lab-gallery-panel" id="panel-anatomia">
+        <div class="lab-panel-header">
+            <div class="section-label"><span class="badge-dot bg-amber"></span> Galería 3</div>
+            <h2>Modelos <span class="gradient-text">Anatómicos</span></h2>
+            <p>Desde esquemas detallados del Sistema Respiratorio hasta maquetas tridimensionales construidas a mano, nuestros alumnos aprenden la anatomía construyéndola. El aprendizaje más profundo siempre pasa por las manos.</p>
+        </div>
+
+
+        <div class="lab-grid" id="grid-anatomia">
+            <div class="lab-card lab-card--wide reveal" data-src="img/lab-anatomia-1.png" data-caption="Sistema Respiratorio · Diagrama y maqueta 3D" data-idx="0">
+                <div class="lab-card-img-wrap">
+                    <img src="img/lab-anatomia-1.png" alt="Diagrama del sistema respiratorio" loading="lazy">
+                    <div class="lab-card-overlay">
+                        <div class="lab-card-overlay-inner">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg>
+                            <p>Sistema Respiratorio</p>
+                            <span>Diagrama y maqueta 3D en cartón</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="lab-card-label">
+                    <span class="lab-card-tag">Anatomía</span>
+                    <p>Diagrama del Sistema Respiratorio con maqueta 3D</p>
+                </div>
+            </div>
+
+            <div class="lab-card lab-placeholder reveal" data-placeholder="anatomia">
+                <div class="lab-placeholder-inner">
+                    <div class="lab-ph-icon">🫁</div>
+                    <p>Maqueta del sistema<br>respiratorio</p>
+                    <span>Próximamente</span>
+                </div>
+            </div>
+            <div class="lab-card lab-placeholder reveal" data-placeholder="anatomia">
+                <div class="lab-placeholder-inner">
+                    <div class="lab-ph-icon">🩻</div>
+                    <p>Esquemas del sistema<br>circulatorio</p>
+                    <span>Próximamente</span>
+                </div>
+            </div>
+            <div class="lab-card lab-placeholder reveal" data-placeholder="anatomia">
+                <div class="lab-placeholder-inner">
+                    <div class="lab-ph-icon">🧬</div>
+                    <p>Modelos de ADN<br>en plastilina</p>
+                    <span>Próximamente</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== LIGHTBOX ===== -->
+    <div class="lab-lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Visor de imagen" hidden>
+        <button class="lb-close" id="lb-close" aria-label="Cerrar">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+        </button>
+        <button class="lb-prev" id="lb-prev" aria-label="Anterior">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m15 18-6-6 6-6"/></svg>
+        </button>
+        <div class="lb-img-wrap">
+            <img id="lb-img" src="" alt="" class="lb-img">
+            <div class="lb-loader">
+                <div class="lb-spinner"></div>
+            </div>
+        </div>
+        <button class="lb-next" id="lb-next" aria-label="Siguiente">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m9 18 6-6-6-6"/></svg>
+        </button>
+        <div class="lb-caption" id="lb-caption"></div>
+    </div>
+    <div class="lab-lightbox-backdrop" id="lb-backdrop"></div>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="main-footer">
+        <div class="footer-glow"></div>
+        <div class="footer-top">
+            <div class="footer-brand">
+                <svg viewBox="0 0 24 24" class="logo-icon-footer">
+                    <path d="M12,2A10,10,0,1,0,22,12,10,10,0,0,0,12,2Zm1,17.93V16a1,1,0,0,0-2,0v3.93A8,8,0,0,1,4.07,13H8a1,1,0,0,0,0-2H4.07A8,8,0,0,1,11,4.07V8a1,1,0,0,0,2,0V4.07A8,8,0,0,1,19.93,11H16a1,1,0,0,0,0,2h3.93A8,8,0,0,1,13,19.93Z" fill="currentColor"/>
+                </svg>
+                <span>INSTITUTO ADVENTISTA · IABAR</span>
+            </div>
+            <p class="footer-quote">
+                "Los cielos cuentan la gloria de Dios, y el firmamento anuncia la obra de sus manos."
+                <span class="quote-author">— Salmo 19:1</span>
+            </p>
+        </div>
+        <div class="footer-bottom">
+            <div class="footer-links">
+                <a href="index.html#inicio">Inicio</a>
+                <a href="index.html#salas">Salas de Exposición</a>
+                <a href="creacion.html">Creación</a>
+                <a href="fe-ciencia.html">Fe y Ciencia</a>
+                <a href="laboratorio.html" class="active">Laboratorio Escolar</a>
+                <a href="index.html#zona-desafios">Zona de Desafíos</a>
+            </div>
+            <p class="footer-copy">&copy; 2026 Museo Virtual 'Diseño y Fe' · Instituto Adventista Iabar. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="laboratorio.js"></script>
+</body>
+</html>

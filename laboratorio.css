@@ -1,0 +1,834 @@
+/* ==========================================================================
+   DISEÑO Y FE - SECCIÓN LABORATORIO ESCOLAR (ESTILO PREMIUM GLASSMORPHISM)
+   ========================================================================== */
+
+/* 1. Héroe del Laboratorio */
+.lab-hero {
+    min-height: 75vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    padding: 140px 6% 80px 6%;
+    z-index: 10;
+    overflow: hidden;
+}
+
+.lab-hero-content {
+    max-width: 800px;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.lab-hero h1 {
+    font-size: 3.8rem;
+    line-height: 1.15;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.lab-hero p {
+    font-size: 1.15rem;
+    color: var(--color-text-muted);
+    max-width: 650px;
+    margin-bottom: 2.5rem;
+    line-height: 1.6;
+}
+
+/* Orbes de fondo decorativos */
+.lab-hero-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(100px);
+    pointer-events: none;
+    opacity: 0.15;
+    z-index: 1;
+    animation: floatOrb 12s ease-in-out infinite alternate;
+}
+
+.lab-hero-orb--teal {
+    top: 15%;
+    left: 15%;
+    width: 350px;
+    height: 350px;
+    background: var(--color-teal);
+    animation-delay: 0s;
+}
+
+.lab-hero-orb--purple {
+    bottom: 10%;
+    right: 15%;
+    width: 400px;
+    height: 400px;
+    background: var(--color-purple);
+    animation-delay: -4s;
+}
+
+@keyframes floatOrb {
+    0% { transform: translateY(0) scale(1); }
+    100% { transform: translateY(-40px) scale(1.1); }
+}
+
+/* Scroll Cue */
+.lab-scroll-cue {
+    position: absolute;
+    bottom: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--color-text-low);
+    animation: bounceScroll 2s infinite;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.lab-scroll-cue:hover {
+    color: var(--color-teal);
+}
+
+@keyframes bounceScroll {
+    0%, 20%, 50%, 80%, 100% { transform: translate(-50%, 0); }
+    40% { transform: translate(-50%, -10px); }
+    60% { transform: translate(-50%, -5px); }
+}
+
+/* 2. Estadísticas de Laboratorio */
+.lab-stats {
+    display: inline-flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.02);
+    border: var(--border-thin);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 100px;
+    padding: 0.8rem 2.2rem;
+    gap: 2rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.lab-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.lab-stat-num {
+    font-family: var(--font-title);
+    font-size: 1.8rem;
+    font-weight: 700;
+    line-height: 1;
+    background: linear-gradient(135deg, var(--color-text-white), var(--color-text-muted));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.lab-stat-label {
+    font-size: 0.78rem;
+    color: var(--color-text-low);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-top: 2px;
+}
+
+.lab-stat-divider {
+    width: 1px;
+    height: 30px;
+    background: rgba(255, 255, 255, 0.08);
+}
+
+/* 3. Navegación por Pestañas (Tabs) */
+.lab-tabs-bar {
+    position: sticky;
+    top: 80px;
+    z-index: 100;
+    background: rgba(6, 6, 15, 0.85);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border-bottom: var(--border-thin);
+    padding: 1.2rem 6%;
+    margin-bottom: 3rem;
+    transition: var(--transition-smooth);
+}
+
+.main-header.scrolled + .lab-tabs-bar {
+    top: 65px;
+}
+
+.lab-tabs-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+
+.lab-tab {
+    background: rgba(255, 255, 255, 0.02);
+    border: var(--border-thin);
+    border-radius: 14px;
+    padding: 1.1rem 1.5rem;
+    color: var(--color-text-muted);
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: var(--transition-smooth);
+    position: relative;
+    overflow: hidden;
+}
+
+.lab-tab::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--color-teal), transparent);
+    transform: scaleX(0);
+    transition: var(--transition-smooth);
+    opacity: 0.8;
+}
+
+.lab-tab:hover {
+    color: var(--color-text-white);
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
+.lab-tab.active {
+    color: var(--color-teal);
+    background: rgba(27, 221, 184, 0.04);
+    border-color: rgba(27, 221, 184, 0.35);
+    box-shadow: 0 8px 25px rgba(27, 221, 184, 0.06);
+}
+
+.lab-tab.active::before {
+    transform: scaleX(1);
+}
+
+/* Indicadores de colores para pestañas específicas en hover/active */
+.lab-tab[data-gallery="bitacora"].active {
+    color: var(--color-purple);
+    background: rgba(167, 139, 250, 0.04);
+    border-color: rgba(167, 139, 250, 0.35);
+}
+.lab-tab[data-gallery="bitacora"].active::before {
+    background: linear-gradient(90deg, transparent, var(--color-purple), transparent);
+}
+
+.lab-tab[data-gallery="anatomia"].active {
+    color: var(--color-amber);
+    background: rgba(251, 191, 36, 0.04);
+    border-color: rgba(251, 191, 36, 0.35);
+}
+.lab-tab[data-gallery="anatomia"].active::before {
+    background: linear-gradient(90deg, transparent, var(--color-amber), transparent);
+}
+
+.lab-tab-icon {
+    font-size: 1.2rem;
+    transition: var(--transition-smooth);
+}
+
+.lab-tab:hover .lab-tab-icon {
+    transform: scale(1.15) rotate(5deg);
+}
+
+.lab-tab-count {
+    background: rgba(255, 255, 255, 0.06);
+    border: var(--border-thin);
+    color: var(--color-text-low);
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 20px;
+    min-width: 25px;
+    text-align: center;
+}
+
+.lab-tab.active .lab-tab-count {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--color-text-white);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* 4. Paneles de Galería */
+.lab-gallery-panel {
+    display: none;
+    padding: 0 8% 100px 8%;
+    max-width: 1400px;
+    margin: 0 auto;
+    animation: fadeInPanel 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.lab-gallery-panel.active {
+    display: block;
+}
+
+@keyframes fadeInPanel {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.lab-panel-header {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 3rem auto;
+}
+
+.lab-panel-header .section-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--color-text-muted);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: 0.8rem;
+}
+
+.lab-panel-header h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.lab-panel-header p {
+    color: var(--color-text-muted);
+    font-size: 1.05rem;
+    line-height: 1.6;
+}
+
+/* 5. Zona de Carga Visual (Upload Hint) */
+.lab-upload-hint {
+    background: rgba(255, 255, 255, 0.01);
+    border: 1px dashed rgba(255, 255, 255, 0.12);
+    border-radius: 16px;
+    padding: 2.2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    color: var(--color-text-muted);
+    font-size: 0.88rem;
+    margin-bottom: 3rem;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+}
+
+.lab-upload-hint svg {
+    color: var(--color-text-low);
+    transition: var(--transition-smooth);
+}
+
+.lab-upload-hint:hover {
+    background: rgba(255, 255, 255, 0.03);
+    border-color: rgba(27, 221, 184, 0.3);
+    color: var(--color-text-white);
+    transform: translateY(-2px);
+}
+
+.lab-upload-hint:hover svg {
+    color: var(--color-teal);
+    transform: translateY(-4px);
+}
+
+/* Variaciones del upload hint según el panel activo */
+#panel-bitacora .lab-upload-hint:hover {
+    border-color: rgba(167, 139, 250, 0.3);
+}
+#panel-bitacora .lab-upload-hint:hover svg {
+    color: var(--color-purple);
+}
+
+#panel-anatomia .lab-upload-hint:hover {
+    border-color: rgba(251, 191, 36, 0.3);
+}
+#panel-anatomia .lab-upload-hint:hover svg {
+    color: var(--color-amber);
+}
+
+/* 6. Grilla de Galería (Masonry-Like con CSS Grid) */
+.lab-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    grid-auto-rows: 260px;
+    gap: 2rem;
+}
+
+/* 7. Tarjetas de la Galería (lab-card) */
+.lab-card {
+    background: var(--bg-card);
+    border: var(--border-thin);
+    border-radius: 20px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    transition: var(--transition-smooth);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    cursor: pointer;
+    height: 100%;
+}
+
+.lab-card--wide {
+    grid-column: span 2;
+}
+
+.lab-card--tall {
+    grid-row: span 2;
+}
+
+/* Envoltura de imagen */
+.lab-card-img-wrap {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+    background: #090914;
+    min-height: 180px;
+}
+
+.lab-card-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Overlay animado */
+.lab-card-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(6, 6, 15, 0.9) 0%, rgba(6, 6, 15, 0.4) 60%, rgba(6, 6, 15, 0.1) 100%);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    opacity: 0;
+    display: flex;
+    align-items: flex-end;
+    padding: 2rem;
+    transition: var(--transition-smooth);
+    z-index: 2;
+}
+
+.lab-card-overlay-inner {
+    transform: translateY(20px);
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    width: 100%;
+}
+
+.lab-card-overlay svg {
+    color: var(--color-teal);
+    margin-bottom: 0.8rem;
+    filter: drop-shadow(0 2px 8px rgba(27,221,184,0.4));
+}
+
+#panel-bitacora .lab-card-overlay svg {
+    color: var(--color-purple);
+    filter: drop-shadow(0 2px 8px rgba(167,139,250,0.4));
+}
+
+#panel-anatomia .lab-card-overlay svg {
+    color: var(--color-amber);
+    filter: drop-shadow(0 2px 8px rgba(251,191,36,0.4));
+}
+
+.lab-card-overlay-inner p {
+    font-family: var(--font-title);
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: var(--color-text-white);
+    margin-bottom: 4px;
+}
+
+.lab-card-overlay-inner span {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+}
+
+/* Hover de la Tarjeta */
+.lab-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+}
+
+.lab-card:hover .lab-card-img-wrap img {
+    transform: scale(1.05);
+}
+
+.lab-card:hover .lab-card-overlay {
+    opacity: 1;
+}
+
+.lab-card:hover .lab-card-overlay-inner {
+    transform: translateY(0);
+}
+
+/* Contenido inferior (Label) */
+.lab-card-label {
+    padding: 1.2rem 1.5rem;
+    background: rgba(10, 10, 25, 0.6);
+    border-top: var(--border-thin);
+    z-index: 1;
+}
+
+.lab-card-tag {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 3px 10px;
+    border-radius: 30px;
+    margin-bottom: 0.5rem;
+    color: var(--color-teal);
+    background: rgba(27, 221, 184, 0.08);
+    border: 1px solid rgba(27, 221, 184, 0.15);
+}
+
+#panel-bitacora .lab-card-tag {
+    color: var(--color-purple);
+    background: rgba(167, 139, 250, 0.08);
+    border-color: rgba(167, 139, 250, 0.15);
+}
+
+#panel-anatomia .lab-card-tag {
+    color: var(--color-amber);
+    background: rgba(251, 191, 36, 0.08);
+    border-color: rgba(251, 191, 36, 0.15);
+}
+
+.lab-card-label p {
+    font-size: 0.88rem;
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 400;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* 8. Tarjetas de Marcador de Posición (Placeholders) */
+.lab-placeholder {
+    background: rgba(255, 255, 255, 0.01);
+    border: 1px dashed rgba(255, 255, 255, 0.08);
+    cursor: default;
+    box-shadow: none;
+    min-height: 260px;
+}
+
+.lab-placeholder-inner {
+    padding: 2.5rem 2rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transition: var(--transition-smooth);
+}
+
+.lab-ph-icon {
+    font-size: 2.4rem;
+    margin-bottom: 1.2rem;
+    filter: grayscale(0.2) opacity(0.5);
+    transition: var(--transition-smooth);
+}
+
+.lab-placeholder-inner p {
+    font-size: 0.95rem;
+    color: var(--color-text-muted);
+    line-height: 1.4;
+    margin-bottom: 1rem;
+    font-weight: 400;
+}
+
+.lab-placeholder-inner span {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--color-text-low);
+    background: rgba(255, 255, 255, 0.04);
+    border: var(--border-thin);
+    padding: 3px 12px;
+    border-radius: 100px;
+    transition: var(--transition-smooth);
+}
+
+/* Hover de los Placeholders */
+.lab-placeholder:hover {
+    border-color: rgba(27, 221, 184, 0.2);
+    background: rgba(27, 221, 184, 0.01);
+    transform: none;
+    box-shadow: none;
+}
+
+.lab-placeholder:hover .lab-ph-icon {
+    transform: translateY(-4px) scale(1.08);
+    filter: grayscale(0) opacity(0.85);
+}
+
+.lab-placeholder:hover .lab-placeholder-inner span {
+    color: var(--color-teal);
+    border-color: rgba(27, 221, 184, 0.25);
+    background: rgba(27, 221, 184, 0.05);
+}
+
+/* Colores personalizados de hover para placeholders */
+.lab-placeholder[data-placeholder="bitacora"]:hover {
+    border-color: rgba(167, 139, 250, 0.2);
+    background: rgba(167, 139, 250, 0.01);
+}
+.lab-placeholder[data-placeholder="bitacora"]:hover .lab-placeholder-inner span {
+    color: var(--color-purple);
+    border-color: rgba(167, 139, 250, 0.25);
+    background: rgba(167, 139, 250, 0.05);
+}
+
+.lab-placeholder[data-placeholder="anatomia"]:hover {
+    border-color: rgba(251, 191, 36, 0.2);
+    background: rgba(251, 191, 36, 0.01);
+}
+.lab-placeholder[data-placeholder="anatomia"]:hover .lab-placeholder-inner span {
+    color: var(--color-amber);
+    border-color: rgba(251, 191, 36, 0.25);
+    background: rgba(251, 191, 36, 0.05);
+}
+
+/* 9. Lightbox (Visor) */
+.lab-lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.lab-lightbox:not([hidden]) {
+    display: flex;
+    pointer-events: auto;
+    opacity: 1;
+}
+
+.lab-lightbox-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(6, 6, 15, 0.9);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    z-index: 1999;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.lab-lightbox-backdrop.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Envoltura y controles */
+.lb-img-wrap {
+    position: relative;
+    max-width: 85vw;
+    max-height: 75vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8);
+    border: var(--border-thin);
+    background: #05050b;
+}
+
+.lb-img {
+    max-width: 100%;
+    max-height: 75vh;
+    object-fit: contain;
+    display: block;
+    opacity: 0;
+    transform: scale(0.97);
+    transition: opacity 0.3s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.lb-img.loaded {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Spinner */
+.lb-loader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.lb-spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid rgba(255, 255, 255, 0.05);
+    border-top: 3px solid var(--color-teal);
+    border-radius: 50%;
+    animation: lbSpin 0.8s linear infinite;
+}
+
+@keyframes lbSpin {
+    to { transform: rotate(360deg); }
+}
+
+/* Botones de navegación */
+.lb-close, .lb-prev, .lb-next {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--color-text-white);
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    transition: var(--transition-smooth);
+    z-index: 10;
+}
+
+.lb-close:hover, .lb-prev:hover, .lb-next:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: scale(1.05);
+}
+
+.lb-close {
+    top: 30px;
+    right: 40px;
+}
+
+.lb-prev {
+    left: 40px;
+}
+
+.lb-next {
+    right: 40px;
+}
+
+.lb-caption {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(6, 6, 15, 0.7);
+    border: var(--border-thin);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding: 0.8rem 1.8rem;
+    border-radius: 100px;
+    font-size: 0.95rem;
+    color: var(--color-text-white);
+    z-index: 10;
+    max-width: 600px;
+    text-align: center;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+/* Badge dot helpers */
+.badge-dot.bg-teal { background-color: var(--color-teal); }
+.badge-dot.bg-purple { background-color: var(--color-purple); }
+.badge-dot.bg-amber { background-color: var(--color-amber); }
+
+/* Responsive adaptivo */
+@media (max-width: 1024px) {
+    .lab-grid {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        grid-auto-rows: 240px;
+        gap: 1.5rem;
+    }
+    .lab-card--wide {
+        grid-column: span 1;
+    }
+}
+
+@media (max-width: 768px) {
+    .lab-hero h1 {
+        font-size: 2.8rem;
+    }
+    .lab-tabs-bar {
+        padding: 0.8rem 4%;
+    }
+    .lab-tabs-inner {
+        gap: 0.5rem;
+    }
+    .lab-tab {
+        padding: 0.8rem 0.5rem;
+        font-size: 0.78rem;
+        flex-direction: column;
+        gap: 4px;
+        border-radius: 10px;
+    }
+    .lab-tab-icon {
+        font-size: 1.1rem;
+    }
+    .lab-tab-count {
+        position: absolute;
+        top: 4px;
+        right: 4px;
+        font-size: 0.65rem;
+        padding: 1px 4px;
+        min-width: 16px;
+    }
+    .lab-panel-header h2 {
+        font-size: 2rem;
+    }
+    .lab-gallery-panel {
+        padding: 0 4% 60px 4%;
+    }
+    .lb-close {
+        top: 20px;
+        right: 20px;
+        width: 44px;
+        height: 44px;
+    }
+    .lb-prev {
+        left: 15px;
+        width: 44px;
+        height: 44px;
+    }
+    .lb-next {
+        right: 15px;
+        width: 44px;
+        height: 44px;
+    }
+}

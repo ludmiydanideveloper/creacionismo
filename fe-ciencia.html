@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="es" style="background:#06060f;color-scheme:dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fe y Ciencia: Los Dos Libros del Creador | Museo Virtual</title>
+    <meta name="description" content="Explora la profunda armonía entre la fe y la ciencia. Citas de los grandes científicos creyentes, preguntas frecuentes y libros recomendados sobre Diseño Inteligente y Creacionismo.">
+    <link href="https://api.fontshare.com/v2/css?f[]=clash-display@300,400,500,600,700&f[]=satoshi@300,400,500,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Cosmos background -->
+    <canvas id="cosmos-canvas-fs" style="position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:-2;pointer-events:none;"></canvas>
+
+    <!-- ===== NAVEGACIÓN ===== -->
+    <header class="main-header">
+        <div class="logo">
+            <svg viewBox="0 0 24 24" class="logo-icon">
+                <path d="M12,2A10,10,0,1,0,22,12,10,10,0,0,0,12,2Zm1,17.93V16a1,1,0,0,0-2,0v3.93A8,8,0,0,1,4.07,13H8a1,1,0,0,0,0-2H4.07A8,8,0,0,1,11,4.07V8a1,1,0,0,0,2,0V4.07A8,8,0,0,1,19.93,11H16a1,1,0,0,0,0,2h3.93A8,8,0,0,1,13,19.93Z" fill="currentColor"/>
+            </svg>
+            <span class="logo-text">INSTITUTO ADVENTISTA</span>
+        </div>
+        <nav class="nav-links">
+            <a href="index.html#inicio">Inicio</a>
+            <a href="index.html#salas">Salas</a>
+            <a href="creacion.html">Creación</a>
+            <a href="fe-ciencia.html" class="active">Fe y Ciencia</a>
+            <a href="laboratorio.html">Laboratorio</a>
+            <a href="index.html#zona-desafios" class="nav-btn-highlight">Zona de Desafíos</a>
+        </nav>
+        <button class="mobile-menu-toggle" aria-label="Abrir menú">
+            <span></span><span></span><span></span>
+        </button>
+    </header>
+
+    <!-- ===== ENCABEZADO DE PÁGINA ===== -->
+    <header class="fs-page-header">
+        <div class="hero-badge">
+            <span class="badge-dot"></span>
+            <span>Diálogo Eterno · Fe &amp; Razón</span>
+        </div>
+        <h1>Los Dos Libros del <span class="gradient-text">Creador</span></h1>
+        <p>A lo largo de la historia, los mayores científicos no vieron contradicción entre razón y fe. Para ellos, estudiar la naturaleza era leer el primer libro escrito por Dios: el universo.</p>
+    </header>
+
+    <!-- ===== SECCIÓN 1: TEXTO + CITAS ===== -->
+    <section class="fs-main-section">
+        <div class="fs-glow-1"></div>
+        <div class="fs-glow-2"></div>
+
+        <div class="fs-top-grid">
+
+            <!-- Columna de texto -->
+            <div class="fs-text-col reveal">
+                <p class="fs-lead">Francis Bacon, padre del método científico, afirmó que Dios nos ha dado dos libros de revelación: las Escrituras y la Naturaleza. Galileo añadió que el libro de la naturaleza está escrito en lenguaje matemático. Kepler declaró que la astronomía era simplemente <em>"pensar los pensamientos de Dios después de Él"</em>.</p>
+                <p>El Creacionismo científico no rechaza la observación empírica: la abraza como la forma más profunda de conocer al Diseñador a través de Su obra. La fe no teme a las preguntas; las provoca.</p>
+                <p>Esta página reúne las voces de los científicos más brillantes de la historia, responde con honestidad a las preguntas más frecuentes, y recomienda lecturas para profundizar en la evidencia.</p>
+
+                <div class="fs-scientists">
+                    <div class="scientist-chip"><span class="sci-dot bg-teal"></span><span>Newton — Física</span></div>
+                    <div class="scientist-chip"><span class="sci-dot bg-purple"></span><span>Pasteur — Microbiología</span></div>
+                    <div class="scientist-chip"><span class="sci-dot bg-amber"></span><span>Faraday — Electromagnetismo</span></div>
+                    <div class="scientist-chip"><span class="sci-dot bg-pink"></span><span>Kepler — Astronomía</span></div>
+                    <div class="scientist-chip"><span class="sci-dot bg-teal"></span><span>Mendel — Genética</span></div>
+                    <div class="scientist-chip"><span class="sci-dot bg-purple"></span><span>Lemaître — Cosmología</span></div>
+                </div>
+            </div>
+
+            <!-- Columna de citas -->
+            <div class="fs-quotes-column reveal">
+                <div class="quote-card quote-card--teal">
+                    <div class="quote-icon">❝</div>
+                    <blockquote>Un poco de ciencia aleja de Dios, pero mucha ciencia devuelve a Él.</blockquote>
+                    <cite>— Louis Pasteur, fundador de la Microbiología moderna</cite>
+                </div>
+                <div class="quote-card quote-card--biblical">
+                    <div class="quote-badge">CITA BÍBLICA</div>
+                    <div class="quote-icon">❝</div>
+                    <blockquote>Los cielos cuentan la gloria de Dios, y el firmamento anuncia la obra de Sus manos.</blockquote>
+                    <cite>— Salmo 19:1 · Las Sagradas Escrituras</cite>
+                </div>
+                <div class="quote-card quote-card--amber">
+                    <div class="quote-icon">❝</div>
+                    <blockquote>En ausencia de cualquier otra prueba, el pulgar solo me convencería de la existencia de Dios.</blockquote>
+                    <cite>— Isaac Newton, fundador de la Física Clásica</cite>
+                </div>
+                <div class="quote-card quote-card--teal">
+                    <div class="quote-icon">❝</div>
+                    <blockquote>La astronomía es la ciencia celestial que nos revela la gloria de Dios. Sus leyes están escritas por la mano de Dios con caracteres matemáticos.</blockquote>
+                    <cite>— Johannes Kepler, matemático y astrónomo</cite>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="divider-container"><div class="divider-line"><div class="divider-shimmer"></div></div></div>
+
+    <!-- ===== SECCIÓN 2: FAQ + CASILLERO ===== -->
+    <section class="fs-faq-section">
+
+        <div class="fs-faq-header reveal">
+            <div class="section-label"><span class="badge-dot"></span> Preguntas Frecuentes</div>
+            <h2>Despejando Dudas: <span class="gradient-text">Fe y Ciencia</span></h2>
+            <p>Respuestas honestas a las dudas más comunes sobre la relación entre ciencia y creacionismo. Sin dogmas, con datos.</p>
+        </div>
+
+        <div class="fs-bottom-grid">
+
+            <!-- Acordeón FAQ -->
+            <div class="faq-accordion reveal">
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>¿El Diseño Inteligente es ciencia o religión?</span>
+                        <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+                    </button>
+                    <div class="faq-answer"><div class="faq-answer-inner">
+                        <p>El Diseño Inteligente (DI) es una hipótesis científica que afirma que ciertas características del universo se explican mejor por una causa inteligente que por procesos no dirigidos. Sus proponentes —como Michael Behe y Stephen Meyer— utilizan metodología científica estándar: análisis de probabilidades, bioquímica molecular y teoría de la información. El DI no cita escrituras: cita datos moleculares y matemáticos.</p>
+                    </div></div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>¿Puede un científico serio ser creacionista?</span>
+                        <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+                    </button>
+                    <div class="faq-answer"><div class="faq-answer-inner">
+                        <p>Absolutamente. Francis Collins (genetista, director del Proyecto Genoma Humano), Owen Gingerich (astrónomo de Harvard), John Polkinghorne (físico teórico de Cambridge), y Allan Sandage (cosmólogo, Premio Crafoord) son solo algunos ejemplos. La fe y el rigor metodológico no son incompatibles; para muchos, el uno profundiza el otro.</p>
+                    </div></div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>¿Qué dice el registro fósil sobre la creación?</span>
+                        <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+                    </button>
+                    <div class="faq-answer"><div class="faq-answer-inner">
+                        <p>El propio Darwin reconoció que la ausencia de formas intermedias era "el argumento más obvio y grave" contra su teoría. La Explosión Cámbrica —donde la mayoría de los filos animales aparecen súbitamente en el registro fósil completamente formados— sigue siendo un desafío serio para el gradualismo. Los creacionistas argumentan que esta aparición repentina es exactamente lo esperado en un modelo de diseño.</p>
+                    </div></div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>¿El Big Bang contradice el Génesis?</span>
+                        <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+                    </button>
+                    <div class="faq-answer"><div class="faq-answer-inner">
+                        <p>Muchos teólogos y filósofos ven el Big Bang como una confirmación de la creación ex nihilo. El universo tuvo un principio absoluto: antes no había espacio, tiempo, ni materia. El padre Georges Lemaître, sacerdote católico y físico, fue quien propuso la teoría del "átomo primitivo". Muchos hoy ven el Big Bang no como negación del Creador, sino como Su firma inicial.</p>
+                    </div></div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>¿Por qué el ADN es evidencia de diseño?</span>
+                        <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+                    </button>
+                    <div class="faq-answer"><div class="faq-answer-inner">
+                        <p>Bill Gates declaró: "El ADN es como un programa de ordenador, pero mucho más avanzado que cualquier software jamás creado". La información compleja y especificada que contiene el ADN siempre observamos que proviene de una mente inteligente. Nunca en la historia hemos visto surgir información funcional compleja sin causa inteligente —ni en la naturaleza, ni en laboratorios.</p>
+                    </div></div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>¿Qué es el Ajuste Fino del universo?</span>
+                        <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+                    </button>
+                    <div class="faq-answer"><div class="faq-answer-inner">
+                        <p>Las constantes físicas del universo están calibradas con precisión impresionante para permitir la existencia de vida. Fred Hoyle —ateo convicto— declaró tras descubrir la resonancia del carbono: "Una interpretación de los hechos sugiere que un superintelecto ha manipulado la física, la química y la biología… Las probabilidades de que la vida surgiera accidentalmente son comparables a las de que un tornado montara un Boeing 747 en un depósito de chatarra."</p>
+                    </div></div>
+                </div>
+
+            </div>
+
+            <!-- Casillero de Preguntas -->
+            <div class="ask-card reveal">
+                <div class="ask-card-header">
+                    <div class="ask-card-icon">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                    </div>
+                    <div>
+                        <h3>Panel de Expertos</h3>
+                        <p>¿Tu pregunta no está aquí? Envíanosla y la analizaremos.</p>
+                    </div>
+                </div>
+
+                <form id="ask-form" class="ask-form" novalidate>
+                    <div class="ask-field-group">
+                        <div class="ask-field">
+                            <label for="ask-name">Nombre</label>
+                            <input type="text" id="ask-name" name="name" placeholder="Tu nombre" required>
+                        </div>
+                        <div class="ask-field">
+                            <label for="ask-email">Correo (opcional)</label>
+                            <input type="email" id="ask-email" name="email" placeholder="tu@correo.com">
+                        </div>
+                    </div>
+                    <div class="ask-field">
+                        <label for="ask-question">Tu pregunta</label>
+                        <textarea id="ask-question" name="question" rows="5" placeholder="Escribe aquí tu duda filosófica, científica o teológica..." required></textarea>
+                    </div>
+                    <button type="submit" id="ask-submit" class="btn btn-primary-gradient ask-submit-btn">
+                        Enviar al Panel de Expertos
+                        <svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+                    </button>
+                </form>
+
+                <div class="ask-success-card" id="ask-success" aria-hidden="true">
+                    <div class="success-check">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                    </div>
+                    <h4>¡Pregunta enviada!</h4>
+                    <p>Gracias por tu curiosidad. Nuestro panel revisará tu pregunta y la incorporará si es representativa de la comunidad.</p>
+                    <button class="btn btn-outline-white btn-sm" id="ask-reset-btn">Enviar otra pregunta</button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <div class="divider-container"><div class="divider-line"><div class="divider-shimmer"></div></div></div>
+
+    <!-- ===== SECCIÓN 3: LIBROS RECOMENDADOS ===== -->
+    <section class="books-section">
+
+        <div class="books-header reveal">
+            <div class="section-label"><span class="badge-dot"></span> Biblioteca del Diseño</div>
+            <h2>Libros <span class="gradient-text">Recomendados</span></h2>
+            <p>Las obras más influyentes sobre Diseño Inteligente, Creacionismo científico y la relación entre fe y ciencia moderna. Lectura rigurosa y accesible.</p>
+        </div>
+
+        <div class="books-grid">
+
+            <!-- Libro 1 -->
+            <div class="book-card reveal">
+                <div class="book-cover book-cover--teal">
+                    <div class="book-spine"></div>
+                    <div class="book-cover-art">
+                        <svg viewBox="0 0 80 100" width="60" height="75">
+                            <circle cx="40" cy="30" r="18" fill="none" stroke="rgba(27,221,184,.5)" stroke-width="1.5"/>
+                            <circle cx="40" cy="30" r="10" fill="none" stroke="rgba(27,221,184,.8)" stroke-width="1"/>
+                            <circle cx="40" cy="30" r="4"  fill="rgba(27,221,184,.9)"/>
+                            <ellipse cx="40" cy="30" rx="28" ry="9"  fill="none" stroke="rgba(27,221,184,.4)" stroke-width="1" transform="rotate(-30 40 30)"/>
+                            <ellipse cx="40" cy="30" rx="28" ry="9"  fill="none" stroke="rgba(167,139,250,.4)" stroke-width="1" transform="rotate(30 40 30)"/>
+                            <line x1="40" y1="55" x2="40" y2="90" stroke="rgba(255,255,255,.15)" stroke-width="1"/>
+                            <line x1="15" y1="70" x2="65" y2="70" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+                        </svg>
+                    </div>
+                    <div class="book-label">
+                        <span class="book-tag">Bioquímica · DI</span>
+                    </div>
+                </div>
+                <div class="book-info">
+                    <div class="book-meta">
+                        <span class="book-year">1996</span>
+                        <span class="book-level book-level--beginner">Accesible</span>
+                    </div>
+                    <h3>Darwin's Black Box</h3>
+                    <p class="book-author">Michael J. Behe</p>
+                    <p class="book-desc">Introduce el concepto de "Complejidad Irreducible". Behe demuestra que sistemas como el flagelo bacteriano no pueden haber surgido por pasos graduales darwinianos, pues dejan de funcionar si se elimina cualquier componente.</p>
+                    <div class="book-tags">
+                        <span>Bioquímica</span>
+                        <span>Diseño Inteligente</span>
+                        <span>Biología molecular</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Libro 2 -->
+            <div class="book-card reveal">
+                <div class="book-cover book-cover--purple">
+                    <div class="book-spine"></div>
+                    <div class="book-cover-art">
+                        <svg viewBox="0 0 80 100" width="60" height="75">
+                            <path d="M10,50 Q25,20 40,50 Q55,80 70,50" fill="none" stroke="rgba(167,139,250,.7)" stroke-width="2"/>
+                            <path d="M10,40 Q25,10 40,40 Q55,70 70,40" fill="none" stroke="rgba(167,139,250,.4)" stroke-width="1.5"/>
+                            <path d="M10,60 Q25,30 40,60 Q55,90 70,60" fill="none" stroke="rgba(167,139,250,.4)" stroke-width="1.5"/>
+                            <circle cx="40" cy="50" r="5" fill="rgba(167,139,250,.9)"/>
+                            <circle cx="17" cy="50" r="3" fill="rgba(240,171,252,.6)"/>
+                            <circle cx="63" cy="50" r="3" fill="rgba(240,171,252,.6)"/>
+                        </svg>
+                    </div>
+                    <div class="book-label">
+                        <span class="book-tag">ADN · Información</span>
+                    </div>
+                </div>
+                <div class="book-info">
+                    <div class="book-meta">
+                        <span class="book-year">2009</span>
+                        <span class="book-level book-level--intermediate">Intermedio</span>
+                    </div>
+                    <h3>Signature in the Cell</h3>
+                    <p class="book-author">Stephen C. Meyer</p>
+                    <p class="book-desc">Meyer argumenta que la complejidad especificada del ADN —su información funcional de 3.000 millones de caracteres— constituye la evidencia más sólida de diseño inteligente jamás descubierta. Un tratado riguroso sobre el origen de la vida.</p>
+                    <div class="book-tags">
+                        <span>Origen de la vida</span>
+                        <span>Información biológica</span>
+                        <span>Filosofía</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Libro 3 -->
+            <div class="book-card reveal">
+                <div class="book-cover book-cover--amber">
+                    <div class="book-spine"></div>
+                    <div class="book-cover-art">
+                        <svg viewBox="0 0 80 100" width="60" height="75">
+                            <path d="M20,80 L40,20 L60,80 Z" fill="none" stroke="rgba(251,191,36,.6)" stroke-width="1.5"/>
+                            <path d="M28,63 L52,63" stroke="rgba(251,191,36,.4)" stroke-width="1"/>
+                            <path d="M33,48 L47,48" stroke="rgba(251,191,36,.4)" stroke-width="1"/>
+                            <circle cx="40" cy="20" r="4" fill="rgba(251,191,36,.9)"/>
+                            <circle cx="20" cy="80" r="3" fill="rgba(251,191,36,.5)"/>
+                            <circle cx="60" cy="80" r="3" fill="rgba(251,191,36,.5)"/>
+                            <!-- Letras ACGT pequeñas -->
+                            <text x="30" y="72" font-size="5" fill="rgba(251,191,36,.7)" font-family="monospace">A C G T</text>
+                        </svg>
+                    </div>
+                    <div class="book-label">
+                        <span class="book-tag">Genética · Fe</span>
+                    </div>
+                </div>
+                <div class="book-info">
+                    <div class="book-meta">
+                        <span class="book-year">2006</span>
+                        <span class="book-level book-level--beginner">Accesible</span>
+                    </div>
+                    <h3>The Language of God</h3>
+                    <p class="book-author">Francis S. Collins</p>
+                    <p class="book-desc">El líder del Proyecto Genoma Humano narra cómo descifrar el ADN humano lo llevó, de ateo militante, a una fe profunda. Collins explora cómo la genética moderna y la espiritualidad no solo coexisten, sino que se complementan.</p>
+                    <div class="book-tags">
+                        <span>Genoma humano</span>
+                        <span>Testimonio científico</span>
+                        <span>Fe racional</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Libro 4 -->
+            <div class="book-card reveal">
+                <div class="book-cover book-cover--pink">
+                    <div class="book-spine"></div>
+                    <div class="book-cover-art">
+                        <svg viewBox="0 0 80 100" width="60" height="75">
+                            <!-- Galaxia espiral estilizada -->
+                            <path d="M40,50 Q55,35 65,20" fill="none" stroke="rgba(240,171,252,.7)" stroke-width="1.5"/>
+                            <path d="M40,50 Q25,35 15,20" fill="none" stroke="rgba(240,171,252,.5)" stroke-width="1"/>
+                            <path d="M40,50 Q55,65 65,80" fill="none" stroke="rgba(240,171,252,.5)" stroke-width="1"/>
+                            <path d="M40,50 Q25,65 15,80" fill="none" stroke="rgba(240,171,252,.4)" stroke-width="1"/>
+                            <circle cx="40" cy="50" r="6" fill="rgba(240,171,252,.85)"/>
+                            <circle cx="65" cy="20" r="2" fill="rgba(255,255,255,.5)"/>
+                            <circle cx="15" cy="20" r="2" fill="rgba(255,255,255,.4)"/>
+                            <circle cx="65" cy="80" r="2" fill="rgba(255,255,255,.4)"/>
+                            <circle cx="15" cy="80" r="2" fill="rgba(255,255,255,.3)"/>
+                        </svg>
+                    </div>
+                    <div class="book-label">
+                        <span class="book-tag">Cosmología · Origen</span>
+                    </div>
+                </div>
+                <div class="book-info">
+                    <div class="book-meta">
+                        <span class="book-year">1992</span>
+                        <span class="book-level book-level--beginner">Accesible</span>
+                    </div>
+                    <h3>God and the Astronomers</h3>
+                    <p class="book-author">Robert Jastrow</p>
+                    <p class="book-desc">El astrofísico agnóstico y fundador del Instituto Goddard de la NASA reflexiona sobre el Big Bang y sus implicaciones teológicas. Su famosa conclusión: "El científico ha escalado la montaña de la ignorancia; y al llegar a la cima, es saludado por una banda de teólogos que llevan siglos allí."</p>
+                    <div class="book-tags">
+                        <span>Astrofísica</span>
+                        <span>Big Bang</span>
+                        <span>Cosmología</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Libro 5 -->
+            <div class="book-card reveal">
+                <div class="book-cover book-cover--teal">
+                    <div class="book-spine"></div>
+                    <div class="book-cover-art">
+                        <svg viewBox="0 0 80 100" width="60" height="75">
+                            <!-- Lupa sobre un libro -->
+                            <rect x="20" y="55" width="40" height="28" rx="4" fill="none" stroke="rgba(27,221,184,.5)" stroke-width="1.5"/>
+                            <line x1="25" y1="64" x2="55" y2="64" stroke="rgba(27,221,184,.3)" stroke-width="1"/>
+                            <line x1="25" y1="70" x2="50" y2="70" stroke="rgba(27,221,184,.3)" stroke-width="1"/>
+                            <line x1="25" y1="76" x2="45" y2="76" stroke="rgba(27,221,184,.3)" stroke-width="1"/>
+                            <circle cx="40" cy="30" r="16" fill="none" stroke="rgba(27,221,184,.7)" stroke-width="2"/>
+                            <line x1="51" y1="41" x2="60" y2="52" stroke="rgba(27,221,184,.7)" stroke-width="2.5" stroke-linecap="round"/>
+                            <text x="33" y="34" font-size="10" fill="rgba(27,221,184,.8)" font-family="monospace">?</text>
+                        </svg>
+                    </div>
+                    <div class="book-label">
+                        <span class="book-tag">Periodismo · Evidencias</span>
+                    </div>
+                </div>
+                <div class="book-info">
+                    <div class="book-meta">
+                        <span class="book-year">2004</span>
+                        <span class="book-level book-level--beginner">Accesible</span>
+                    </div>
+                    <h3>The Case for a Creator</h3>
+                    <p class="book-author">Lee Strobel</p>
+                    <p class="book-desc">El ex periodista del Chicago Tribune —antes ateo convicto— entrevista a los principales científicos del movimiento del Diseño Inteligente. Una investigación periodística rigurosa sobre cosmología, física, astrofísica, bioquímica y genética que lo llevó a un cambio de visión radical.</p>
+                    <div class="book-tags">
+                        <span>Periodismo investigativo</span>
+                        <span>Ciencia popular</span>
+                        <span>Apologética</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Libro 6 -->
+            <div class="book-card reveal">
+                <div class="book-cover book-cover--purple">
+                    <div class="book-spine"></div>
+                    <div class="book-cover-art">
+                        <svg viewBox="0 0 80 100" width="60" height="75">
+                            <!-- Árbol de la vida estilizado -->
+                            <line x1="40" y1="85" x2="40" y2="50" stroke="rgba(167,139,250,.6)" stroke-width="2"/>
+                            <line x1="40" y1="65" x2="25" y2="45" stroke="rgba(167,139,250,.5)" stroke-width="1.5"/>
+                            <line x1="40" y1="55" x2="55" y2="38" stroke="rgba(167,139,250,.5)" stroke-width="1.5"/>
+                            <line x1="25" y1="45" x2="15" y2="30" stroke="rgba(167,139,250,.4)" stroke-width="1"/>
+                            <line x1="25" y1="45" x2="32" y2="28" stroke="rgba(167,139,250,.4)" stroke-width="1"/>
+                            <line x1="55" y1="38" x2="48" y2="22" stroke="rgba(167,139,250,.4)" stroke-width="1"/>
+                            <line x1="55" y1="38" x2="65" y2="25" stroke="rgba(167,139,250,.4)" stroke-width="1"/>
+                            <!-- Marca de corte en el árbol -->
+                            <line x1="30" y1="55" x2="50" y2="55" stroke="rgba(240,171,252,.6)" stroke-width="1.5" stroke-dasharray="3,2"/>
+                        </svg>
+                    </div>
+                    <div class="book-label">
+                        <span class="book-tag">Darwin · Crítica</span>
+                    </div>
+                </div>
+                <div class="book-info">
+                    <div class="book-meta">
+                        <span class="book-year">2013</span>
+                        <span class="book-level book-level--advanced">Avanzado</span>
+                    </div>
+                    <h3>Darwin's Doubt</h3>
+                    <p class="book-author">Stephen C. Meyer</p>
+                    <p class="book-desc">Meyer examina en profundidad la Explosión Cámbrica —el fenómeno que el propio Darwin admitió como su mayor problema— y argumenta que la aparición súbita de los grandes filos animales requiere una explicación que va más allá del darwinismo estándar. Una obra académica de primer nivel.</p>
+                    <div class="book-tags">
+                        <span>Paleontología</span>
+                        <span>Explosión Cámbrica</span>
+                        <span>Filosofía de la ciencia</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="main-footer">
+        <div class="footer-glow"></div>
+        <div class="footer-top">
+            <div class="footer-brand">
+                <svg viewBox="0 0 24 24" class="logo-icon-footer">
+                    <path d="M12,2A10,10,0,1,0,22,12,10,10,0,0,0,12,2Zm1,17.93V16a1,1,0,0,0-2,0v3.93A8,8,0,0,1,4.07,13H8a1,1,0,0,0,0-2H4.07A8,8,0,0,1,11,4.07V8a1,1,0,0,0,2,0V4.07A8,8,0,0,1,19.93,11H16a1,1,0,0,0,0,2h3.93A8,8,0,0,1,13,19.93Z" fill="currentColor"/>
+                </svg>
+                <span>INSTITUTO ADVENTISTA · IABAR</span>
+            </div>
+            <p class="footer-quote">
+                "Los cielos cuentan la gloria de Dios, y el firmamento anuncia la obra de sus manos."
+                <span class="quote-author">— Salmo 19:1</span>
+            </p>
+        </div>
+        <div class="footer-bottom">
+            <div class="footer-links">
+                <a href="index.html#inicio">Inicio</a>
+                <a href="index.html#salas">Salas de Exposición</a>
+                <a href="index.html#sala-adn">Sala 1 — ADN 3D</a>
+                <a href="index.html#sala-fisica">Sala 2 — Constantes</a>
+                <a href="creacion.html">Creación</a>
+                <a href="fe-ciencia.html" class="active">Fe y Ciencia</a>
+                <a href="laboratorio.html">Laboratorio Escolar</a>
+                <a href="index.html#zona-desafios">Zona de Desafíos</a>
+            </div>
+            <p class="footer-copy">
+                &copy; 2026 Museo Virtual 'Diseño y Fe' · Instituto Adventista Iabar. Todos los derechos reservados.
+            </p>
+        </div>
+    </footer>
+
+    <script src="fe-ciencia.js"></script>
+</body>
+</html>
