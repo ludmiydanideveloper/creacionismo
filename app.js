@@ -1272,25 +1272,22 @@ function initUIControls() {
 
     if (menuToggle && navLinks) {
         menuToggle.addEventListener('click', () => {
-            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
-            if (navLinks.style.display === 'flex') {
-                navLinks.style.flexDirection = 'column';
-                navLinks.style.position = 'absolute';
-                navLinks.style.top = '80px';
-                navLinks.style.left = '0';
-                navLinks.style.width = '100%';
-                navLinks.style.background = 'rgba(6, 6, 15, 0.98)';
-                navLinks.style.padding = '2rem';
-                navLinks.style.borderBottom = '1px solid rgba(255, 255, 255, 0.1)';
-            }
+            navLinks.classList.toggle('open');
         });
         
         navLinks.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
                 if (window.innerWidth <= 768) {
-                    navLinks.style.display = 'none';
+                    navLinks.classList.remove('open');
                 }
             });
+        });
+        
+        // Reset state if resized to desktop
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) {
+                navLinks.classList.remove('open');
+            }
         });
     }
 

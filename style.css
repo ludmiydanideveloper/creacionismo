@@ -3780,3 +3780,459 @@ input[type="range"]::-webkit-slider-thumb:hover {
     line-height: 1.4;
 }
 
+/* ==========================================================================
+   RESPONSIVE MOBILE — Media Queries
+   ========================================================================== */
+
+/* --- Tablet (≤1024px) --- */
+@media (max-width: 1024px) {
+    /* Hero */
+    .hero {
+        padding: 110px 5% 60px 5%;
+    }
+    .hero-content {
+        max-width: 65%;
+    }
+    .hero-visual {
+        width: 50vw;
+    }
+
+    /* ADN Viewer */
+    .viewer-container {
+        grid-template-columns: 1fr;
+    }
+    .canvas-3d-wrapper {
+        height: 420px;
+    }
+
+    /* Physics */
+    .physics-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    .physics-visual {
+        height: 360px;
+    }
+
+    /* Fossils */
+    .fossil-img-placeholder {
+        height: 300px;
+    }
+
+    /* Fe y Ciencia */
+    .fs-top-grid {
+        grid-template-columns: 1fr;
+    }
+    .fs-bottom-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Creacion */
+    .day-content-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* --- Mobile (≤768px) --- */
+@media (max-width: 768px) {
+
+    /* ===== GLOBAL ===== */
+    html {
+        font-size: 15px;
+    }
+
+    /* ===== HEADER / NAV ===== */
+    .main-header {
+        padding: 0 5%;
+        height: 65px;
+    }
+    .logo-text {
+        font-size: 0.95rem;
+    }
+    .nav-links {
+        display: none;
+        position: fixed;
+        top: 65px;
+        left: 0;
+        width: 100%;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0;
+        background: rgba(6, 6, 15, 0.97);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-bottom: var(--border-thin);
+        padding: 16px 5%;
+        z-index: 999;
+    }
+    .nav-links.open {
+        display: flex;
+    }
+    .nav-links a {
+        width: 100%;
+        padding: 14px 0;
+        font-size: 0.95rem;
+        border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .nav-links a:last-child {
+        border-bottom: none;
+    }
+    .nav-links a.nav-btn-highlight {
+        margin-top: 12px;
+        text-align: center;
+        padding: 12px 0;
+    }
+    .mobile-menu-toggle {
+        display: flex;
+    }
+
+    /* ===== HERO (index.html) ===== */
+    .hero {
+        min-height: auto;
+        padding: 95px 5% 50px 5%;
+    }
+    .hero-content {
+        max-width: 100%;
+    }
+    .hero-visual {
+        display: none;
+    }
+    .hero-title {
+        font-size: clamp(28px, 8vw, 44px);
+    }
+    .hero-subtitle-description {
+        font-size: 14.5px;
+        margin-bottom: 28px;
+    }
+    .hero-actions {
+        flex-direction: column;
+        gap: 10px;
+        margin-bottom: 28px;
+    }
+    .hero-actions .btn {
+        width: 100%;
+        justify-content: center;
+    }
+    .hero-stats {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    /* ===== ROOMS (cards de salas) ===== */
+    .rooms-section {
+        padding: 60px 5%;
+    }
+    .rooms-section-header {
+        margin-bottom: 32px;
+    }
+    .rooms-section-header h2 {
+        font-size: clamp(22px, 7vw, 36px);
+    }
+    .rooms-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+    .room-card {
+        min-height: 300px;
+    }
+
+    /* ===== SALA ADN (interactive-viewer-section) ===== */
+    .interactive-viewer-section {
+        padding: 60px 5%;
+    }
+    .viewer-container {
+        grid-template-columns: 1fr;
+        border-radius: 18px;
+    }
+    .canvas-3d-wrapper {
+        height: 300px;
+    }
+    .viewer-sidebar {
+        padding: 24px 20px;
+        border-left: none;
+        border-top: var(--border-thin);
+    }
+    .viewer-controls {
+        gap: 6px;
+        flex-wrap: wrap;
+    }
+    .control-btn {
+        font-size: 0.75rem;
+        padding: 6px 12px;
+    }
+
+    /* ===== SALA FÍSICA (physics-section) ===== */
+    .physics-section {
+        padding: 60px 5%;
+    }
+    .physics-container {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+    .physics-text h2 {
+        font-size: clamp(20px, 7vw, 32px);
+    }
+    .physics-visual {
+        height: 280px;
+        border-radius: 16px;
+        overflow: hidden;
+    }
+    .constants-list {
+        gap: 12px;
+    }
+    .constant-item {
+        flex-direction: column;
+        gap: 6px;
+        align-items: flex-start;
+    }
+    .c-number {
+        font-size: 1.4rem;
+    }
+
+    /* ===== SALA FÓSILES (fossils-section) ===== */
+    .fossils-section {
+        padding: 60px 5%;
+    }
+    .fossil-tabs {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+    .fossil-tab {
+        font-size: 0.82rem;
+        padding: 10px 16px;
+        flex: 1 1 auto;
+        text-align: center;
+    }
+    .fossil-detail {
+        flex-direction: column;
+        gap: 20px;
+    }
+    .fossil-img-placeholder {
+        height: 220px;
+        border-radius: 14px;
+    }
+    .fossil-text {
+        padding: 0;
+    }
+
+    /* ===== ZONA DE DESAFÍOS (challenges-section) ===== */
+    .challenges-section {
+        padding: 60px 5%;
+    }
+    .challenges-banner {
+        border-radius: 20px;
+        padding: 32px 20px;
+    }
+    .challenges-tabs {
+        flex-wrap: wrap;
+        gap: 8px;
+        justify-content: center;
+    }
+    .challenge-tab {
+        font-size: 0.8rem;
+        padding: 10px 16px;
+        flex: 1 1 auto;
+        text-align: center;
+    }
+    .game-play-area {
+        flex-direction: column;
+        gap: 24px;
+    }
+    .sliders-panel {
+        width: 100%;
+    }
+    .visual-feedback-panel {
+        width: 100%;
+    }
+    .universe-simulator {
+        height: 220px;
+    }
+    .game-dna-area {
+        flex-direction: column;
+    }
+    .base-selection-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+    }
+
+    /* ===== FE Y CIENCIA (fe-ciencia.html) ===== */
+    .fs-page-header {
+        padding: 100px 5% 40px;
+        text-align: center;
+    }
+    .fs-page-header h1 {
+        font-size: clamp(26px, 8vw, 44px);
+    }
+    .fs-main-section {
+        padding: 40px 5%;
+    }
+    .fs-top-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+    .fs-bottom-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+    .fs-quotes-column {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+    .fs-scientists {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+    .fs-faq-section {
+        padding: 40px 5%;
+    }
+    .faq-accordion {
+        gap: 10px;
+    }
+    .faq-question {
+        padding: 16px 18px;
+        font-size: 0.9rem;
+    }
+    .fs-books-section {
+        padding: 40px 5%;
+    }
+    .book-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+    .book-card {
+        flex-direction: row;
+        gap: 16px;
+    }
+    .book-cover {
+        width: 80px;
+        height: 110px;
+        flex-shrink: 0;
+        border-radius: 10px;
+    }
+    .book-info {
+        padding: 12px 0;
+    }
+
+    /* ===== CREACIÓN (creacion.html) ===== */
+    .creation-hero {
+        padding: 100px 5% 40px;
+        text-align: center;
+    }
+    .creation-hero h1 {
+        font-size: clamp(26px, 8vw, 44px);
+    }
+    .days-nav {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        gap: 8px;
+        padding-bottom: 8px;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+    }
+    .day-btn {
+        flex-shrink: 0;
+        font-size: 0.82rem;
+        padding: 10px 16px;
+        white-space: nowrap;
+    }
+    .day-content-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+    .day-image-container,
+    .day-img-wrap {
+        height: 220px;
+        border-radius: 14px;
+    }
+    .creation-timeline-section {
+        padding: 40px 5%;
+    }
+
+    /* ===== FOOTER ===== */
+    .main-footer {
+        padding: 48px 5% 28px;
+    }
+    .footer-inner {
+        flex-direction: column;
+        gap: 24px;
+        align-items: center;
+        text-align: center;
+    }
+    .footer-links {
+        flex-wrap: wrap;
+        gap: 8px 16px;
+        justify-content: center;
+    }
+    .footer-copy {
+        font-size: 0.78rem;
+        text-align: center;
+    }
+    .footer-brand {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+    .footer-brand-desc {
+        text-align: center;
+        max-width: 280px;
+    }
+}
+
+/* --- Small Mobile (≤480px) --- */
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: clamp(24px, 9vw, 34px);
+    }
+    .hero-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .rooms-section-header h2,
+    .physics-text h2 {
+        font-size: 1.6rem;
+    }
+    .canvas-3d-wrapper {
+        height: 240px;
+    }
+    .challenge-tab {
+        flex: 1 1 100%;
+    }
+    .base-selection-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .book-card {
+        flex-direction: column;
+    }
+    .book-cover {
+        width: 100%;
+        height: 130px;
+    }
+    .stat-number {
+        font-size: 20px;
+    }
+    .section-label {
+        font-size: 10px;
+    }
+    .btn {
+        font-size: 0.85rem;
+        padding: 0.75rem 1.3rem;
+    }
+    .fossil-tab {
+        flex: 1 1 100%;
+    }
+    .day-detail-grid {
+        grid-template-columns: 1fr;
+    }
+    .lab-stats {
+        flex-direction: column;
+        border-radius: 16px;
+        gap: 16px;
+        padding: 1.5rem;
+        align-items: flex-start;
+        width: 100%;
+    }
+    .lab-stat-divider {
+        display: none;
+    }
+}
+
