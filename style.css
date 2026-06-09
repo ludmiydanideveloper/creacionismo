@@ -279,6 +279,7 @@ p {
     padding: 120px 6% 60px 6%;
     position: relative;
     z-index: 10;
+    overflow: hidden;
 }
 
 .hero-glow-1 {
