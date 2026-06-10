@@ -65,11 +65,11 @@ function initCosmosBackground() {
             this.speedY = Math.random() * 0.08 - 0.04;
             
             const colors = [
-                'rgba(27, 221, 184, 0.4)',  // Teal
-                'rgba(167, 139, 250, 0.35)', // Purple
-                'rgba(240, 171, 252, 0.35)', // Pink
-                'rgba(251, 191, 36, 0.3)',   // Amber
-                'rgba(255, 255, 255, 0.5)'   // White
+                'rgba(27, 79, 191, 0.4)',   // Royal Blue
+                'rgba(0, 44, 105, 0.45)',    // Brand Blue (Educación Adventista)
+                'rgba(74, 158, 232, 0.4)',   // Sky Blue
+                'rgba(217, 119, 6, 0.45)',   // Amber/Dorado
+                'rgba(167, 139, 250, 0.45)'  // Violet
             ];
             this.color = colors[Math.floor(Math.random() * colors.length)];
             this.alpha = Math.random() * 0.4 + 0.2;
@@ -193,10 +193,10 @@ function _doInitHero(container) {
     parallaxGroup.add(rotateGroup);
 
     // TEXTURA DE PUNTOS COMÚN
-    const cyanTexture = createCircleTexture('rgba(0, 240, 255, 1)');
-    const purpleTexture = createCircleTexture('rgba(167, 139, 250, 1)');
-    const pinkTexture = createCircleTexture('rgba(240, 171, 252, 1)');
-    const whiteTexture = createCircleTexture('rgba(255, 255, 255, 1)');
+    const cyanTexture = createCircleTexture('rgba(27, 79, 191, 1)');   // Royal Blue
+    const purpleTexture = createCircleTexture('rgba(0, 44, 105, 1)');   // Brand Blue (Educación Adventista)
+    const pinkTexture = createCircleTexture('rgba(217, 119, 6, 1)');    // Amber/Dorado
+    const whiteTexture = createCircleTexture('rgba(0, 44, 105, 1)');    // Brand Blue para contraste en blanco
 
     // ----------------------------------------------------
     // MODELO 1: ÁTOMO DE PARTÍCULAS (Lado Izquierdo del Héroe)
@@ -505,13 +505,13 @@ function initRoomDna3D() {
 
     try {
         const scene = new THREE.Scene();
-    scene.fog = new THREE.FogExp2(0x06060f, 0.02);
+    scene.fog = new THREE.FogExp2(0xf8fafc, 0.02);
 
     const camera = new THREE.PerspectiveCamera(40, container.clientWidth / container.clientHeight, 0.1, 100);
     camera.position.set(0, 0, 15);
 
-    const renderer = new THREE.WebGLRenderer({ antialias: true });
-    renderer.setClearColor(0x030308, 1);
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    renderer.setClearColor(0x000000, 0);
     renderer.setSize(container.clientWidth, container.clientHeight);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     container.appendChild(renderer.domElement);
@@ -585,8 +585,8 @@ function initRoomDna3D() {
 
     const sphereGeom = new THREE.SphereGeometry(0.18, 24, 24);
     const backboneMat = new THREE.MeshPhongMaterial({
-        color: 0xffffff,
-        emissive: 0x111111,
+        color: 0x002c69,
+        emissive: 0x001133,
         shininess: 120
     });
 
@@ -822,7 +822,7 @@ function initGalaxy3D() {
     try {
         // Escena, Cámara y Renderizador
         const scene = new THREE.Scene();
-    scene.fog = new THREE.FogExp2(0x06060f, 0.03);
+    scene.fog = new THREE.FogExp2(0xffffff, 0.02);
 
     const camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 100);
     camera.position.set(0, 4.0, 6.5); // Vista ligeramente elevada e inclinada (acercada para mayor tamaño)
