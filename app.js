@@ -226,7 +226,7 @@ function _doInitHero(container) {
         map: cyanTexture,
         transparent: true,
         opacity: 0.95,
-        blending: THREE.AdditiveBlending,
+        blending: THREE.NormalBlending,
         depthWrite: false
     });
     const nucleusPoints = new THREE.Points(nucleusGeom, nucleusMat);
@@ -234,9 +234,9 @@ function _doInitHero(container) {
 
     // 2. Órbitas Elípticas de Partículas (Estilo stardust del screenshot)
     const orbits = [
-        { rotX: 0.5, rotY: 0.3, rotZ: 0, A: 3.2, B: 1.2, texture: cyanTexture, color: 0x00f0ff, speed: 2.8 }, // Órbitas ~1.5x más grandes
-        { rotX: -0.6, rotY: -0.4, rotZ: 0.8, A: 2.9, B: 1.1, texture: purpleTexture, color: 0xa78bfa, speed: 3.5 },
-        { rotX: 0.2, rotY: 0.8, rotZ: -0.5, A: 3.4, B: 1.4, texture: pinkTexture, color: 0xf0abfc, speed: 2.2 }
+        { rotX: 0.5, rotY: 0.3, rotZ: 0, A: 3.2, B: 1.2, texture: cyanTexture, color: 0x004499, speed: 2.8 }, // Órbitas ~1.5x más grandes
+        { rotX: -0.6, rotY: -0.4, rotZ: 0.8, A: 2.9, B: 1.1, texture: purpleTexture, color: 0x4a148c, speed: 3.5 },
+        { rotX: 0.2, rotY: 0.8, rotZ: -0.5, A: 3.4, B: 1.4, texture: pinkTexture, color: 0x880e4f, speed: 2.2 }
     ];
 
     const electrons = [];
@@ -268,7 +268,7 @@ function _doInitHero(container) {
             map: data.texture,
             transparent: true,
             opacity: 0.85,
-            blending: THREE.AdditiveBlending,
+            blending: THREE.NormalBlending,
             depthWrite: false
         });
 
@@ -349,7 +349,7 @@ function _doInitHero(container) {
         map: cyanTexture,
         transparent: true,
         opacity: 0.85,
-        blending: THREE.AdditiveBlending,
+        blending: THREE.NormalBlending,
         depthWrite: false
     });
 
@@ -361,8 +361,8 @@ function _doInitHero(container) {
     // Generar peldaños hechos enteramente de partículas de neón
     const rungPoints = [];
     const rungColors = [];
-    const colorTeal = new THREE.Color(0x00f0ff);
-    const colorPurple = new THREE.Color(0xa78bfa);
+    const colorTeal = new THREE.Color(0x004499);
+    const colorPurple = new THREE.Color(0x4a148c);
 
     for (let r = 0; r < nodesHelix1.length; r++) {
         const p1 = nodesHelix1[r];
@@ -397,7 +397,7 @@ function _doInitHero(container) {
         vertexColors: true,
         transparent: true,
         opacity: 0.8,
-        blending: THREE.AdditiveBlending,
+        blending: THREE.NormalBlending,
         depthWrite: false
     });
 

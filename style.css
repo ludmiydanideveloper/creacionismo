@@ -157,7 +157,7 @@ p {
     top: 0;
     left: 0;
     width: 100%;
-    height: 80px;
+    height: 120px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -170,7 +170,7 @@ p {
 }
 
 .main-header.scrolled {
-    height: 65px;
+    height: 100px;
     background: #002252; /* Un tono un poco más oscuro al hacer scroll */
     border-bottom: 1px solid rgba(255, 255, 255, 0.12);
 }
@@ -190,7 +190,7 @@ p {
 }
 
 .logo-img {
-    height: 38px;
+    height: 90px;
     width: auto;
     object-fit: contain;
 }
@@ -198,7 +198,7 @@ p {
 .logo-text {
     font-family: var(--font-title);
     font-weight: 500;
-    font-size: 1.2rem;
+    font-size: 0.85rem;
     letter-spacing: 0.1em;
     color: #ffffff !important;
 }
@@ -554,14 +554,24 @@ p {
 }
 
 .rooms-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    display: flex;
+    overflow-x: auto;
     gap: 20px;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 20px;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    -webkit-overflow-scrolling: touch;
+}
+.rooms-grid::-webkit-scrollbar {
+    display: none;
 }
 
 .room-card {
     display: flex;
     flex-direction: column;
+    flex: 0 0 320px;
+    scroll-snap-align: start;
     border-radius: 24px;
     border: var(--border-thin);
     background: var(--bg-card);
@@ -1757,7 +1767,7 @@ input[type="range"]::-webkit-slider-thumb:hover {
 /* 13. Footer */
 .main-footer {
     position: relative;
-    background-color: #030308;
+    background-color: var(--bg-nav-blue);
     color: var(--color-text-white);
     padding: 80px 6% 40px 6%;
     border-top: var(--border-thin);
@@ -3907,15 +3917,18 @@ input[type="range"]::-webkit-slider-thumb:hover {
     /* ===== HEADER / NAV ===== */
     .main-header {
         padding: 0 5%;
-        height: 65px;
+        height: 95px;
+    }
+    .logo-img {
+        height: 70px;
     }
     .logo-text {
-        font-size: 0.95rem;
+        font-size: 0.8rem;
     }
     .nav-links {
         display: flex;
         position: fixed;
-        top: 65px;
+        top: 95px;
         left: 0;
         width: 100%;
         flex-direction: column;
@@ -3971,12 +3984,17 @@ input[type="range"]::-webkit-slider-thumb:hover {
     .hero {
         min-height: auto;
         padding: 95px 5% 50px 5%;
+        flex-direction: column;
     }
     .hero-content {
         max-width: 100%;
     }
     .hero-visual {
-        display: none;
+        display: block;
+        width: 100%;
+        height: 380px;
+        margin-top: 40px;
+        position: relative;
     }
     .hero-title {
         font-size: clamp(28px, 8vw, 44px);
@@ -4010,7 +4028,6 @@ input[type="range"]::-webkit-slider-thumb:hover {
         font-size: clamp(22px, 7vw, 36px);
     }
     .rooms-grid {
-        grid-template-columns: 1fr;
         gap: 16px;
     }
     .room-card {
@@ -4339,3 +4356,100 @@ input[type="range"]::-webkit-slider-thumb:hover {
     }
 }
 
+/* ==========================================================================
+   CAROUSEL ANIMATION & GOOGLE REVIEWS
+   ========================================================================== */
+@keyframes carousel-scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+.carousel-track {
+    display: flex;
+    gap: 20px;
+    animation: carousel-scroll 25s linear infinite;
+    width: 4080px; /* 12 cards of 320px + 20px gap */
+}
+
+.carousel-track:hover {
+    animation-play-state: paused;
+}
+
+.google-review-card {
+    flex: 0 0 auto;
+    width: 320px;
+    white-space: normal;
+    background: #ffffff;
+    border: 1px solid #f0f0f0;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.gr-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    position: relative;
+}
+
+.gr-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.gr-user-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.gr-name {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: #202124;
+}
+
+.gr-role {
+    font-size: 0.75rem;
+    color: #70757a;
+}
+
+.gr-icon {
+    margin-left: auto;
+    align-self: flex-start;
+}
+
+.gr-rating-time {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.gr-rating-time .stars {
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+}
+
+.gr-time {
+    font-size: 0.75rem;
+    color: #70757a;
+}
+
+.gr-text {
+    font-size: 0.9rem;
+    color: #3c4043;
+    line-height: 1.5;
+    font-style: italic;
+    margin: 0;
+}

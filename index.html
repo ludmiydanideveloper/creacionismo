@@ -20,7 +20,7 @@
     <header class="main-header">
         <div class="logo">
             <img src="img/educacionadventista.png" alt="Logo" class="logo-img">
-            <span class="logo-text">INSTITUTO ADVENTISTA</span>
+            <span class="logo-text">INSTITUTO ADVENTISTA BARADERO</span>
         </div>
         <nav class="nav-links">
             <a href="#inicio" class="active">Inicio</a>
@@ -43,11 +43,7 @@
         <div class="hero-glow-2"></div>
         
         <div class="hero-content">
-            <!-- Badge Capsule -->
-            <div class="hero-badge">
-                <span class="badge-dot"></span>
-                <span>Museo Abierto y 100% Interactivo</span>
-            </div>
+            <!-- Badge Capsule (removed) -->
             
             <h1 class="hero-title">
                 ¿Por qué estamos aquí?<br>
@@ -105,18 +101,11 @@
         </div>
     </section>
 
-    <!-- Línea divisoria de brillo (Shimmer Line Divider) -->
-    <div class="divider-container">
-        <div class="divider-line">
-            <div class="divider-shimmer"></div>
-        </div>
-    </div>
+    <!-- Se movió la sección -->
 
     <!-- Sección de Salas (Featured Projects Layout) -->
     <section id="salas" class="rooms-section">
-        <div class="section-label">
-            <span class="badge-dot"></span> Salas de Exposición
-        </div>
+
         
         <div class="rooms-section-header">
             <h2>Evidencias que Hablan<br><span class="gradient-text">por sí Mismas.</span></h2>
@@ -195,6 +184,181 @@
         </div>
     </section>
 
+    <!-- Sección ¿Qué Aprendiste? -->
+    <section class="learning-section" style="padding: 60px 6%; background: rgba(0, 34, 82, 0.02);">
+        <div class="review-container" style="max-width: 800px; margin: 0 auto; background: white; padding: 40px; border-radius: 16px; box-shadow: 0 10px 40px rgba(0,0,0,0.08); border: 1px solid rgba(0,0,0,0.05);">
+            <h3 style="color: var(--color-purple); margin-bottom: 5px; font-size: 1.8rem;">Deja tu huella en esta sala. Lo que me gusto fue:</h3>
+            <p class="text-muted" style="font-size: 0.95rem; margin-bottom: 25px;">Comparte tu opinión sobre el museo virtual del Instituto Adventista Baradero.</p>
+            
+            <form id="review-form" class="review-form">
+                <div class="star-rating" style="margin-bottom: 15px;">
+                    <button type="button" class="star-btn active" data-star="1">★</button>
+                    <button type="button" class="star-btn active" data-star="2">★</button>
+                    <button type="button" class="star-btn active" data-star="3">★</button>
+                    <button type="button" class="star-btn active" data-star="4">★</button>
+                    <button type="button" class="star-btn active" data-star="5">★</button>
+                    <input type="hidden" id="review-stars-val" value="5">
+                </div>
+                <div class="review-fields" style="display: flex; flex-direction: column; gap: 15px;">
+                    <input type="text" id="review-name" placeholder="Tu Nombre" required style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-family: inherit;">
+                    <textarea id="review-comment" placeholder="¿Qué fue lo que más te gustó o sorprendió?" rows="3" required style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-family: inherit; resize: vertical;"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary-gradient" style="width: 100%; margin-top: 20px; justify-content: center;">Publicar Respuesta</button>
+            </form>
+
+            <div class="review-success-card" id="review-success" style="display: none; text-align: center; margin-top: 20px; padding: 20px; background: #f0fdf4; border-radius: 8px; border: 1px solid #bbf7d0;">
+                <div class="success-check" style="font-size: 2rem; color: #10b981; margin-bottom: 10px;">✓</div>
+                <h4 style="color: #065f46; margin-bottom: 5px;">¡Gracias por compartir!</h4>
+                <p style="color: #047857; font-size: 0.9rem; margin-bottom: 15px;">Tu respuesta ha sido añadida al carrusel.</p>
+                <button id="btn-reset-review" class="btn btn-outline-white btn-sm" style="color: var(--color-purple); border-color: var(--color-purple);">Escribir otra respuesta</button>
+            </div>
+        </div>
+    </section>
+
+        <!-- Mural Carrusel -->
+        <div class="reviews-board" style="margin-top: 60px; overflow: hidden; position: relative; width: 100%;">
+            <!-- Carrusel Animado -->
+            <div class="carousel-container" style="position: relative; width: 100%; overflow: hidden; white-space: nowrap; padding: 10px 0;">
+                <div class="carousel-track" id="reviews-board-list">
+                    <!-- Originales -->
+                    <div class="google-review-card carousel-slide">
+                        <div class="gr-header">
+                            <div class="gr-avatar" style="background-color: #E2D3C4;">B</div>
+                            <div class="gr-user-info">
+                                <span class="gr-name">Benjamín S.</span>
+                                <span class="gr-role">Visitante</span>
+                            </div>
+                        </div>
+                        <p class="gr-text">"¡Me encantó el simulador de ADN en 3D! Es increíble cómo se complementan las bases."</p>
+                    </div>
+
+                    <div class="google-review-card carousel-slide">
+                        <div class="gr-header">
+                            <div class="gr-avatar" style="background-color: #E6C4BE;">S</div>
+                            <div class="gr-user-info">
+                                <span class="gr-name">Sofía M.</span>
+                                <span class="gr-role">Visitante</span>
+                            </div>
+                        </div>
+                        <p class="gr-text">"La sala del Ajuste Fino es impresionante, los gráficos y mover los controles te hace entender la precisión."</p>
+                    </div>
+
+                    <div class="google-review-card carousel-slide">
+                        <div class="gr-header">
+                            <div class="gr-avatar" style="background-color: #B5D2CA;">L</div>
+                            <div class="gr-user-info">
+                                <span class="gr-name">Lucas T.</span>
+                                <span class="gr-role">Visitante</span>
+                            </div>
+                        </div>
+                        <p class="gr-text">"Nunca había visto el cosmos de esta manera. ¡Muy buena experiencia interactiva!"</p>
+                    </div>
+
+                    <div class="google-review-card carousel-slide">
+                        <div class="gr-header">
+                            <div class="gr-avatar" style="background-color: #D4E2C4;">M</div>
+                            <div class="gr-user-info">
+                                <span class="gr-name">Martina G.</span>
+                                <span class="gr-role">Visitante</span>
+                            </div>
+                        </div>
+                        <p class="gr-text">"El área de los fósiles me dejó sin palabras. Muy interactivo y fácil de usar."</p>
+                    </div>
+                    
+                    <!-- Duplicados 1 -->
+                    <div class="google-review-card carousel-slide">
+                        <div class="gr-header">
+                            <div class="gr-avatar" style="background-color: #E2D3C4;">B</div>
+                            <div class="gr-user-info">
+                                <span class="gr-name">Benjamín S.</span>
+                                <span class="gr-role">Visitante</span>
+                            </div>
+                        </div>
+                        <p class="gr-text">"¡Me encantó el simulador de ADN en 3D! Es increíble cómo se complementan las bases."</p>
+                    </div>
+
+                    <div class="google-review-card carousel-slide">
+                        <div class="gr-header">
+                            <div class="gr-avatar" style="background-color: #E6C4BE;">S</div>
+                            <div class="gr-user-info">
+                                <span class="gr-name">Sofía M.</span>
+                                <span class="gr-role">Visitante</span>
+                            </div>
+                        </div>
+                        <p class="gr-text">"La sala del Ajuste Fino es impresionante, los gráficos y mover los controles te hace entender la precisión."</p>
+                    </div>
+
+                    <div class="google-review-card carousel-slide">
+                        <div class="gr-header">
+                            <div class="gr-avatar" style="background-color: #B5D2CA;">L</div>
+                            <div class="gr-user-info">
+                                <span class="gr-name">Lucas T.</span>
+                                <span class="gr-role">Visitante</span>
+                            </div>
+                        </div>
+                        <p class="gr-text">"Nunca había visto el cosmos de esta manera. ¡Muy buena experiencia interactiva!"</p>
+                    </div>
+
+                    <div class="google-review-card carousel-slide">
+                        <div class="gr-header">
+                            <div class="gr-avatar" style="background-color: #D4E2C4;">M</div>
+                            <div class="gr-user-info">
+                                <span class="gr-name">Martina G.</span>
+                                <span class="gr-role">Visitante</span>
+                            </div>
+                        </div>
+                        <p class="gr-text">"El área de los fósiles me dejó sin palabras. Muy interactivo y fácil de usar."</p>
+                    </div>
+                    
+                    <!-- Duplicados 2 (Para monitores ultra anchos) -->
+                    <div class="google-review-card carousel-slide">
+                        <div class="gr-header">
+                            <div class="gr-avatar" style="background-color: #E2D3C4;">B</div>
+                            <div class="gr-user-info">
+                                <span class="gr-name">Benjamín S.</span>
+                                <span class="gr-role">Visitante</span>
+                            </div>
+                        </div>
+                        <p class="gr-text">"¡Me encantó el simulador de ADN en 3D! Es increíble cómo se complementan las bases."</p>
+                    </div>
+
+                    <div class="google-review-card carousel-slide">
+                        <div class="gr-header">
+                            <div class="gr-avatar" style="background-color: #E6C4BE;">S</div>
+                            <div class="gr-user-info">
+                                <span class="gr-name">Sofía M.</span>
+                                <span class="gr-role">Visitante</span>
+                            </div>
+                        </div>
+                        <p class="gr-text">"La sala del Ajuste Fino es impresionante, los gráficos y mover los controles te hace entender la precisión."</p>
+                    </div>
+
+                    <div class="google-review-card carousel-slide">
+                        <div class="gr-header">
+                            <div class="gr-avatar" style="background-color: #B5D2CA;">L</div>
+                            <div class="gr-user-info">
+                                <span class="gr-name">Lucas T.</span>
+                                <span class="gr-role">Visitante</span>
+                            </div>
+                        </div>
+                        <p class="gr-text">"Nunca había visto el cosmos de esta manera. ¡Muy buena experiencia interactiva!"</p>
+                    </div>
+
+                    <div class="google-review-card carousel-slide">
+                        <div class="gr-header">
+                            <div class="gr-avatar" style="background-color: #D4E2C4;">M</div>
+                            <div class="gr-user-info">
+                                <span class="gr-name">Martina G.</span>
+                                <span class="gr-role">Visitante</span>
+                            </div>
+                        </div>
+                        <p class="gr-text">"El área de los fósiles me dejó sin palabras. Muy interactivo y fácil de usar."</p>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     <!-- Línea divisoria de brillo -->
     <div class="divider-container">
         <div class="divider-line">
@@ -204,9 +368,7 @@
 
     <!-- Sala 1: Visualizador Interactivo 3D de ADN -->
     <section id="sala-adn" class="interactive-viewer-section">
-        <div class="section-label">
-            <span class="badge-dot"></span> El Código de la Vida (Biología Molecular)
-        </div>
+
         <div class="rooms-section-header left-aligned">
             <h2>El ADN — <span class="gradient-text">Un Idioma Escrito en la Vida</span></h2>
             <p style="margin-bottom: 12px; color: var(--color-teal); font-weight: 500; font-size: 0.95rem;">
@@ -271,13 +433,18 @@
                 </div>
             </div>
         </div>
+
+        <!-- Video Documental -->
+        <div class="video-container" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 12px; margin-top: 40px; margin-bottom: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+            <iframe src="https://www.youtube.com/embed/djvigP_KE-w" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
     </section>
 
     <!-- Sala 2: Constantes Físicas -->
     <section id="sala-fisica" class="physics-section">
         <div class="physics-container">
             <div class="physics-text">
-                <span class="section-tag">El Ajuste Fino del Universo</span>
+
                 <h2>El Reloj de Dios — <span class="gradient-text">Un Universo Preciso</span></h2>
                 <p style="color: var(--color-purple); font-weight: 500; font-size: 0.95rem; margin-bottom: 20px;">
                     <strong>Objetivo:</strong> Explicar cómo el universo parece estar "calibrado" con precisión para la vida humana.
@@ -294,9 +461,18 @@
                     </div>
                 </div>
                 
-                <p style="font-size: 0.82rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--color-text-low); margin-top: 30px; margin-bottom: 12px;">Valores Matemáticos de Calibración:</p>
-                
-                <div class="constants-list">
+
+                <a href="#zona-desafios" class="btn btn-primary-gradient">
+                    Probar el Simulador
+                    <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </a>
+            </div>
+            
+            <div class="physics-visual">
+                <p style="font-size: 0.82rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--color-text-low); margin-bottom: 12px;">Valores Matemáticos de Calibración:</p>
+                <div class="constants-list" style="margin-top: 0;">
                     <div class="constant-item">
                         <span class="c-number">10<sup>60</sup></span>
                         <div>
@@ -319,19 +495,12 @@
                         </div>
                     </div>
                 </div>
-                <a href="#zona-desafios" class="btn btn-primary-gradient">
-                    Probar el Simulador
-                    <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-                    </svg>
-                </a>
             </div>
-            
-            <div class="physics-visual">
-                <div id="galaxy-3d-container" class="galaxy-container">
-                    <canvas id="galaxy-3d-canvas"></canvas>
-                </div>
-            </div>
+        </div>
+
+        <!-- Video Documental -->
+        <div class="video-container" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 12px; margin-top: 40px; margin-bottom: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+            <iframe src="https://www.youtube.com/embed/z9H6DTubBWE" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
     </section>
 
@@ -344,9 +513,7 @@
 
     <!-- Sala 3: Fósiles y Complejidad -->
     <section id="sala-fosiles" class="fossils-section">
-        <div class="section-label">
-            <span class="badge-dot"></span> El Registro de la Complejidad (Paleontología/Complejidad Irreducible)
-        </div>
+
         <div class="rooms-section-header">
             <h2>Huellas de Diseño — <span class="gradient-text">Sistemas Complejos</span></h2>
             <p style="color: var(--color-amber); font-weight: 500; font-size: 0.95rem; margin-bottom: 24px;">
@@ -433,6 +600,11 @@
                 </div>
             </div>
         </div>
+
+        <!-- Video Documental -->
+        <div class="video-container" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 12px; margin-top: 40px; margin-bottom: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+            <iframe src="https://www.youtube.com/embed/UHAXCq_ZwjM" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
     </section>
 
     <!-- Línea divisoria de brillo -->
@@ -447,9 +619,7 @@
         <div class="challenges-banner">
             <div class="banner-gradient-bg"></div>
             <div class="banner-inner">
-                <div class="section-label centered">
-                    <span class="badge-dot active"></span> Zona de Mini-juegos Interactivos
-                </div>
+
                 
                 <h2>
                     <svg viewBox="0 0 24 24" width="36" height="36" class="play-section-icon" style="vertical-align: middle; margin-right: 8px; color: var(--color-teal); fill: currentColor; display: inline-block; animation: pulse 2s ease-in-out infinite;">
@@ -619,55 +789,7 @@
                                 </div>
                             </div>
 
-                            <!-- REVIEW CONTAINER -->
-                            <div class="review-container">
-                                <h3>Deja tu Reseña</h3>
-                                <p class="text-muted" style="font-size: 0.82rem; margin-bottom: 15px;">Comparte tu opinión sobre el museo virtual del Instituto Adventista Iabar.</p>
-                                
-                                <form id="review-form" class="review-form">
-                                    <div class="star-rating">
-                                        <button type="button" class="star-btn active" data-star="1">★</button>
-                                        <button type="button" class="star-btn active" data-star="2">★</button>
-                                        <button type="button" class="star-btn active" data-star="3">★</button>
-                                        <button type="button" class="star-btn active" data-star="4">★</button>
-                                        <button type="button" class="star-btn active" data-star="5">★</button>
-                                        <input type="hidden" id="review-stars-val" value="5">
-                                    </div>
-                                    <div class="review-fields">
-                                        <input type="text" id="review-name" placeholder="Tu Nombre" required>
-                                        <textarea id="review-comment" placeholder="¿Qué fue lo que más te gustó del museo?" rows="3" required></textarea>
-                                    </div>
-                                    <button type="submit" class="btn btn-primary-gradient btn-sm" style="width: 100%; margin-top: 10px;">Publicar Reseña</button>
-                                </form>
-
-                                <div class="review-success-card" id="review-success" style="display: none;">
-                                    <div class="success-check">✓</div>
-                                    <h4>¡Gracias por tu opinión!</h4>
-                                    <p>Tu reseña ha sido publicada con éxito en el mural del museo.</p>
-                                    <button id="btn-reset-review" class="btn btn-outline-white btn-sm" style="margin-top: 15px;">Escribir otra reseña</button>
-                                </div>
-                                
-                                <!-- Mural de Reseñas de Alumnos -->
-                                <div class="reviews-board">
-                                    <h5>Mural de Visitas (Alumnos de Iabar)</h5>
-                                    <div class="reviews-board-list" id="reviews-board-list">
-                                        <div class="student-review-item">
-                                            <div class="review-item-header">
-                                                <strong>Benjamín S.</strong>
-                                                <span class="stars text-amber">★★★★★</span>
-                                            </div>
-                                            <p>"¡Me encantó el simulador de ADN en 3D! Es increíble cómo se complementan las bases."</p>
-                                        </div>
-                                        <div class="student-review-item">
-                                            <div class="review-item-header">
-                                                <strong>Sofía M.</strong>
-                                                <span class="stars text-amber">★★★★★</span>
-                                            </div>
-                                            <p>"La sala del Ajuste Fino es impresionante, los gráficos y mover los controles te hace entender la precisión."</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <!-- El review-container se movió arriba -->
                         </div>
                     </div>
                 </div>
@@ -680,10 +802,8 @@
         <div class="footer-glow"></div>
         <div class="footer-top">
             <div class="footer-brand">
-                <svg viewBox="0 0 24 24" class="logo-icon-footer">
-                    <path d="M12,2A10,10,0,1,0,22,12,10,10,0,0,0,12,2Zm1,17.93V16a1,1,0,0,0-2,0v3.93A8,8,0,0,1,4.07,13H8a1,1,0,0,0,0-2H4.07A8,8,0,0,1,11,4.07V8a1,1,0,0,0,2,0V4.07A8,8,0,0,1,19.93,11H16a1,1,0,0,0,0,2h3.93A8,8,0,0,1,13,19.93Z" fill="currentColor"/>
-                </svg>
-                <span>INSTITUTO ADVENTISTA · IABAR</span>
+                <img src="img/educacionadventista.png" alt="Logo" class="logo-img">
+                <span class="logo-text" style="color: white !important;">INSTITUTO ADVENTISTA BARADERO</span>
             </div>
             
             <p class="footer-quote">
