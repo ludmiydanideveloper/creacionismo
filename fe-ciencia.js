@@ -134,7 +134,7 @@ function initFaqAccordion() {
 }
 
 /* --------------------------------------------------------------------------
-   4. FORMULARIO DE PREGUNTAS
+   4. FORMULARIO DE PREGUNTAS (SUPABASE)
    -------------------------------------------------------------------------- */
 function initAskForm() {
     const form     = document.getElementById('ask-form');
@@ -142,38 +142,66 @@ function initAskForm() {
     const resetBtn = document.getElementById('ask-reset-btn');
     const submit   = document.getElementById('ask-submit');
 
+    // Inicializar Supabase
+    const supabaseUrl = 'https://dgqlvvgdlrofuidxrkxl.supabase.co';
+    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRncWx2dmdkbHJvZnVpZHhya3hsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODExMzIxNTMsImV4cCI6MjA5NjcwODE1M30.Gi_AChU4LT_oAGZIeq3FzEE9zqkh6UNCB7JAYVcYU8Y';
+    let supabase = null;
+    if (window.supabase) {
+        supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
+    }
+
     if (!form || !success) return;
 
-    form.addEventListener('submit', e => {
+    form.addEventListener('submit', async (e) => {
         e.preventDefault();
 
-        const nameEl = document.getElementById('ask-name');
-        const qEl    = document.getElementById('ask-question');
+        const nameEl  = document.getElementById('ask-name');
+        const emailEl = document.getElementById('ask-email'); // asumiendo que este es el ID del correo
+        const qEl     = document.getElementById('ask-question');
 
         // Validación mínima
         let valid = true;
         [nameEl, qEl].forEach(el => {
-            if (!el.value.trim()) {
-                el.style.borderColor  = 'rgba(231,76,60,.6)';
-                el.style.boxShadow    = '0 0 0 3px rgba(231,76,60,.1)';
-                setTimeout(() => { el.style.borderColor = ''; el.style.boxShadow = ''; }, 1800);
+            if (!el || !el.value.trim()) {
+                if(el) {
+                    el.style.borderColor  = 'rgba(231,76,60,.6)';
+                    el.style.boxShadow    = '0 0 0 3px rgba(231,76,60,.1)';
+                    setTimeout(() => { el.style.borderColor = ''; el.style.boxShadow = ''; }, 1800);
+                }
                 valid = false;
             }
         });
         if (!valid) return;
 
-        // Simular envío
+        // Estado de carga
         if (submit) { submit.disabled = true; submit.textContent = 'Enviando…'; }
 
-        setTimeout(() => {
+        try {
+            if (supabase) {
+                // Guardar en la base de datos
+                const nameVal = nameEl.value.trim();
+                const emailVal = emailEl ? emailEl.value.trim() : null;
+                const questionVal = qEl.value.trim();
+
+                const { error } = await supabase
+                    .from('expert_questions')
+                    .insert([{ name: nameVal, email: emailVal, question: questionVal }]);
+                    
+                if (error) throw error;
+            }
+
             form.reset();
             success.classList.add('visible');
             success.setAttribute('aria-hidden', 'false');
+        } catch (err) {
+            console.error('Error al enviar pregunta:', err);
+            alert('Hubo un error al enviar tu pregunta. Por favor, intenta de nuevo.');
+        } finally {
             if (submit) {
                 submit.disabled = false;
                 submit.innerHTML = 'Enviar al Panel de Expertos <svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7v10"/></svg>';
             }
-        }, 900);
+        }
     });
 
     if (resetBtn) {

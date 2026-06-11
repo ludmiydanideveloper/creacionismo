@@ -1561,58 +1561,112 @@ function initQuizAndReviews() {
         renderQuestion();
     }
 
-    // ---- REVIEWS LOGIC ----
-    const starsContainer = document.querySelector('.star-rating');
-    const starBtns = document.querySelectorAll('.star-btn');
-    const starsInput = document.getElementById('review-stars-val');
+    // ---- SUPABASE & REVIEWS LOGIC ----
+    const supabaseUrl = 'https://dgqlvvgdlrofuidxrkxl.supabase.co';
+    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRncWx2dmdkbHJvZnVpZHhya3hsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODExMzIxNTMsImV4cCI6MjA5NjcwODE1M30.Gi_AChU4LT_oAGZIeq3FzEE9zqkh6UNCB7JAYVcYU8Y';
+    
+    // Inicializar cliente solo si supabase está disponible
+    let supabase = null;
+    if (window.supabase) {
+        supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
+    }
+
     const reviewForm = document.getElementById('review-form');
     const reviewSuccess = document.getElementById('review-success');
     const reviewsBoardList = document.getElementById('reviews-board-list');
     const btnResetReview = document.getElementById('btn-reset-review');
 
-    if (starsContainer && starBtns.length > 0) {
-        starBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                const rating = parseInt(btn.getAttribute('data-star') || '5', 10);
-                if (starsInput) starsInput.value = rating;
-
-                // Actualizar estado de las estrellas
-                starBtns.forEach(s => {
-                    const sRating = parseInt(s.getAttribute('data-star') || '0', 10);
-                    s.classList.toggle('active', sRating <= rating);
-                });
-            });
-        });
+    // Colores aleatorios para los avatares
+    const avatarColors = ['#E2D3C4', '#E6C4BE', '#B5D2CA', '#E4D5E6', '#C4DFE6', '#F3E5AB'];
+    
+    // Función para renderizar una tarjeta de reseña
+    function createReviewCard(name, comment) {
+        const initial = name.charAt(0).toUpperCase();
+        const color = avatarColors[Math.floor(Math.random() * avatarColors.length)];
+        
+        return `
+            <div class="google-review-card carousel-slide" style="animation: scaleUp 0.4s ease-out;">
+                <div class="gr-header">
+                    <div class="gr-avatar" style="background-color: ${color};">${initial}</div>
+                    <div class="gr-user-info">
+                        <span class="gr-name">${name}</span>
+                        <span class="gr-role">Visitante</span>
+                    </div>
+                </div>
+                <p class="gr-text">"${comment}"</p>
+            </div>
+        `;
     }
 
+    // Cargar reseñas desde Supabase
+    async function loadReviews() {
+        if (!supabase || !reviewsBoardList) return;
+        
+        try {
+            const { data, error } = await supabase
+                .from('reviews')
+                .select('*')
+                .order('created_at', { ascending: false });
+                
+            if (error) throw error;
+            
+            if (data && data.length > 0) {
+                // Agregar las reseñas de la base de datos al principio del carrusel
+                let html = '';
+                data.forEach(review => {
+                    html += createReviewCard(review.name, review.comment);
+                });
+                
+                // Las agregamos al inicio de las que ya existen (las estáticas)
+                reviewsBoardList.insertAdjacentHTML('afterbegin', html);
+            }
+        } catch (err) {
+            console.error('Error al cargar reseñas:', err);
+        }
+    }
+
+    // Cargar al inicio
+    loadReviews();
+
     if (reviewForm && reviewSuccess && reviewsBoardList) {
-        reviewForm.addEventListener('submit', (e) => {
+        reviewForm.addEventListener('submit', async (e) => {
             e.preventDefault();
 
             const nameVal = document.getElementById('review-name').value.trim();
             const commentVal = document.getElementById('review-comment').value.trim();
-            const ratingVal = parseInt(starsInput ? starsInput.value : '5', 10);
 
             if (!nameVal || !commentVal) return;
 
-            // Simular publicación agregando una tarjeta de reseña
-            const starsStr = '★'.repeat(ratingVal) + '☆'.repeat(5 - ratingVal);
-            const reviewHtml = `
-                <div class="student-review-item reveal revealed" style="animation: scaleUp 0.4s ease-out;">
-                    <div class="review-item-header">
-                        <strong>${nameVal}</strong>
-                        <span class="stars text-amber">${starsStr}</span>
-                    </div>
-                    <p>"${commentVal}"</p>
-                </div>
-            `;
+            // Mostrar estado de carga en el botón
+            const submitBtn = reviewForm.querySelector('button[type="submit"]');
+            const originalBtnText = submitBtn.textContent;
+            submitBtn.textContent = 'Enviando...';
+            submitBtn.disabled = true;
 
-            // Agregar al mural al principio de la lista
-            reviewsBoardList.insertAdjacentHTML('afterbegin', reviewHtml);
-            
-            // Ocultar formulario, mostrar éxito
-            reviewForm.style.display = 'none';
-            reviewSuccess.style.display = 'block';
+            try {
+                if (supabase) {
+                    // Guardar en Supabase
+                    const { error } = await supabase
+                        .from('reviews')
+                        .insert([{ name: nameVal, comment: commentVal }]);
+                        
+                    if (error) throw error;
+                }
+
+                // Renderizar inmediatamente en el frontend
+                const reviewHtml = createReviewCard(nameVal, commentVal);
+                reviewsBoardList.insertAdjacentHTML('afterbegin', reviewHtml);
+                
+                // Mostrar mensaje de éxito
+                reviewForm.style.display = 'none';
+                reviewSuccess.style.display = 'block';
+            } catch (err) {
+                console.error('Error al enviar reseña:', err);
+                alert('Hubo un error al guardar tu comentario. Por favor, intenta de nuevo.');
+            } finally {
+                submitBtn.textContent = originalBtnText;
+                submitBtn.disabled = false;
+            }
         });
     }
 
